@@ -70,7 +70,7 @@ public class DirectionApiManager {
         this.queue.add(request);
     }
 
-    private String generateUrl(LatLng origin, LatLng destination) {
+    private String generateUrl(LatLng origin, LatLng destination) { //TODO test properly
         String originText = origin.latitude + "," + origin.longitude;
         String destinationText = destination.latitude + "," + destination.longitude;
         String fullUrl = this.url + this.key;
@@ -79,7 +79,7 @@ public class DirectionApiManager {
         return fullUrl;
     }
 
-    private void handleResponse(JSONObject response) {
+    private void handleResponse(JSONObject response) { //TODO finish
         try {
             JSONArray routes = response.getJSONArray("routes");
         } catch (JSONException e) {
