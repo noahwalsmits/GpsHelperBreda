@@ -1,9 +1,10 @@
-package com.b.gpshelperbreda;
+package com.b.gpshelperbreda.activity;
 
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.b.gpshelperbreda.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
