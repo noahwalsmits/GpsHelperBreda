@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:padding="5dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAppearance="@style/normalText" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
