@@ -3,13 +3,29 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="colorPrimaryDark">@color/colorGray</item>
+        <item name="colorAccent">@color/colorLightGray</item>
     </style>
     <style name="LogoHeader" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/made</item>
+        <item name="android:textSize">32dp</item>
     </style>
+    <style name="SubHeader" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:fontFamily">@font/made</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="SecondSubHeader" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:fontFamily">@font/made</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+    <string name="normalText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/made</item>
+        <item name="android:textSize">12dp</item>
+    </string>
 
 </resources>
