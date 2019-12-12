@@ -71,7 +71,7 @@
                 style="@style/RouteButton"
                 android:layout_width="200dp"
                 android:layout_height="47dp"
-                android:backgroundTint="@color/colorAccent"
+                android:backgroundTint="@color/colorLightGray"
                 android:text="@string/Route"
                 android:textAppearance="@style/ButtonText"
                 app:layout_constraintEnd_toEndOf="parent"
