@@ -29,7 +29,7 @@ public class Notifications {
 
     public int sendNotification(String title, String description) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_launcher_foreground) //TODO get custom icon
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground) //TODO get custom icon (probably app launcher icon)
                 .setContentTitle(title)
                 .setContentText(description)
                 .setStyle(new NotificationCompat.BigTextStyle()

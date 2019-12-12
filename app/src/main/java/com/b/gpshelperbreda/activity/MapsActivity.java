@@ -59,11 +59,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void routeLine(PolylineOptions polylineOptions) {
+        //TODO have activity team customize the polyline to fit the style
         mMap.addPolyline(polylineOptions);
     }
 
     @Override
     public void onResponseError(Error error) {
-
+        //TODO Display error if route cannot be obtained
     }
 }

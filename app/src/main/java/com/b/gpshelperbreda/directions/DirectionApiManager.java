@@ -40,6 +40,8 @@ public class DirectionApiManager {
 
     }
 
+    //TODO allow for continuous route updates?
+    //TODO make asynchronous
     public void generateRoute(LatLng origin, LatLng destination) {
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -81,7 +83,7 @@ public class DirectionApiManager {
         this.queue.add(request);
     }
 
-    private String generateUrl(LatLng origin, LatLng destination) { //TODO test properly
+    private String generateUrl(LatLng origin, LatLng destination) {
         String originText = origin.latitude + "," + origin.longitude;
         String destinationText = destination.latitude + "," + destination.longitude;
         String fullUrl = this.url + this.key;
@@ -90,7 +92,7 @@ public class DirectionApiManager {
         return fullUrl;
     }
 
-    private void handleResponse(JSONObject response) { //TODO finish
+    private void handleResponse(JSONObject response) { //TODO make asynchronous
         try {
             JSONArray routes = response.getJSONArray("routes");
             for (int i = 0; i < routes.length(); i++) {                     //for each route
