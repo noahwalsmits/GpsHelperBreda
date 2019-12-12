@@ -5,14 +5,17 @@ import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.b.gpshelperbreda.R;
+import com.b.gpshelperbreda.directions.DirectionApiListener;
+import com.b.gpshelperbreda.directions.DirectionApiManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener {
 
     private GoogleMap mMap;
 
@@ -26,6 +29,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    private void testRouteGen() {
+        DirectionApiManager directions = new DirectionApiManager(this, this);
+        LatLng start = new LatLng(51.526174,5.057324);
+        mMap.addMarker(new MarkerOptions().position(start));
+        LatLng end = new LatLng(51.528316,5.054030);
+        mMap.addMarker(new MarkerOptions().position(end));
+        directions.generateRoute(start, end);
+    }
 
     /**
      * Manipulates the map once available.
@@ -41,8 +52,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(51.526174,5.057324);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        testRouteGen();
+    }
+
+    @Override
+    public void routeLine(PolylineOptions polylineOptions) {
+        mMap.addPolyline(polylineOptions);
+    }
+
+    @Override
+    public void onResponseError(Error error) {
+
     }
 }

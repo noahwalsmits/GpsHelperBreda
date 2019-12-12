@@ -1,6 +1,7 @@
 package com.b.gpshelperbreda.directions;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class DirectionApiManager {
     private final String key = "f9455192-0b6c-4c1e-a472-8fa5a3f1eba7";
     private final String url = "http://145.48.6.80:3000/directions?origin=<latlng1>&destination=<latlng2>&mode=walking&key=";
 
+    private final String tag = "DirectionApiManager";
+
     public DirectionApiManager(Context context, DirectionApiListener listener) {
         this.context = context;
         this.queue = Volley.newRequestQueue(context);
@@ -34,7 +38,7 @@ public class DirectionApiManager {
 
     }
 
-    public void doThing(LatLng origin, LatLng destination) {
+    public void generateRoute(LatLng origin, LatLng destination) {
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 this.generateUrl(origin, destination),
@@ -49,7 +53,8 @@ public class DirectionApiManager {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.wtf(tag, "onErrorResponse");
+                        System.out.println(error.toString());
                     }
                 }
         );
@@ -103,7 +108,7 @@ public class DirectionApiManager {
                     }
                 }
                 lineOptions.addAll(points);
-                
+                this.listener.routeLine(lineOptions);
             }
 
         } catch (JSONException e) {
