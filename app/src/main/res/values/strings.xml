@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">GPS Helper Breda</string>
+    <string name="logo_name">GPS Helper</string>
+    <string name="logo_location">Breda</string>
     <string name="title_activity_maps">Map</string>
+    <string name="RouteSelectorText">Kies route:</string>
+    <string name="Route">Route 1</string>
 </resources>
