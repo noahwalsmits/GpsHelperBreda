@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/information_name_activity"
-        android:textAppearance="@style/SubHeader"
+        android:textAppearance="@style/LogoSubText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/information_text_name_application" />

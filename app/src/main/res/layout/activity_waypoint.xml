@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".activity.WaypointActivity">
 
+    <TextView
+        android:id="@+id/waypoint_text_application_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="@style/LogoHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/waypoint_text_name_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:text="@string/waypoint_name_activity"
+        android:textAppearance="@style/LogoSubText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waypoint_text_application_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/waypoint_recyclerview_waypoints"
+        android:layout_width="match_constrain"
+        android:layout_height="match_constrain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waypoint_text_name_activity" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
