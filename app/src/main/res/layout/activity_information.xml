@@ -27,12 +27,32 @@
         app:layout_constraintTop_toBottomOf="@+id/information_text_name_application" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/information_cardview_information_about_app"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorLightGray"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_text_name_activity" />
+        app:layout_constraintTop_toBottomOf="@+id/information_text_name_activity">
+
+        <LinearLayout
+            android:id="@+id/information_constrain_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/information_text_information_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/information_about_title" />
+
+            <TextView
+                android:id="@+id/information_text_information_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/information_about_app" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
