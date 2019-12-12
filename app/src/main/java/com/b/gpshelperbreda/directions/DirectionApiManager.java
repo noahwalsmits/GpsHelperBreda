@@ -11,7 +11,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.PolyUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,20 +96,16 @@ public class DirectionApiManager {
             for (int i = 0; i < routes.length(); i++) {                     //for each route
                 JSONObject route = routes.getJSONObject(i);
                 JSONArray legs = route.getJSONArray("legs");
-                List<LatLng> points = new ArrayList<>();
                 PolylineOptions lineOptions = new PolylineOptions();
                 for (int j = 0; j < legs.length(); j++) {                   //for each leg
                     JSONObject leg = legs.getJSONObject(j);
                     JSONArray steps = leg.getJSONArray("steps");
                     for (int k = 0; k < steps.length(); k++) {              //for each step
                         JSONObject step = steps.getJSONObject(k);
-                        JSONObject startLocation = step.getJSONObject("start_location");
-                        points.add(new LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng")));
-                        JSONObject endLocation = step.getJSONObject("end_location");
-                        points.add(new LatLng(endLocation.getDouble("lat"), startLocation.getDouble("lng")));
+                        String encoded = step.getJSONObject("polyline").getString("points");
+                        lineOptions.addAll(PolyUtil.decode(encoded));
                     }
                 }
-                lineOptions.addAll(points);
                 this.listener.routeLine(lineOptions);
             }
 

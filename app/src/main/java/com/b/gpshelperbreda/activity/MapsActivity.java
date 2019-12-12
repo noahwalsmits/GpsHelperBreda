@@ -33,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         DirectionApiManager directions = new DirectionApiManager(this, this);
         LatLng start = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(start));
-        LatLng end = new LatLng(51.528316,5.054030);
+        LatLng end = new LatLng(53.097141, 6.259557);
         mMap.addMarker(new MarkerOptions().position(end));
         directions.generateRoute(start, end);
     }
