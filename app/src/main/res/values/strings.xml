@@ -2,6 +2,6 @@
     <string name="app_name">GPS Helper</string>
     <string name="title_activity_maps">Map</string>
     <string name="information_name_activity">Informatie</string>
-    <string name="information_about_app">hier komt de app informatie</string>
-    <string name="information_about_title">hier komt de titel</string>
+    <string name="information_about_title">Uitleg app</string>
+    <string name="information_about_app">In deze applicatie staat een kaart met een vooraf gekozen route. Met behulp van deze applicatie kan de route gelopen worden. De route loopt tussen de verschillende waypoints. Bij ieder waypoint zal er extra informatie getoond worden. Als er van de route wordt afgeweken laat de applicatie dit weten. Succes en veel wandel plezier!</string>
 </resources>

@@ -30,6 +30,7 @@
         android:id="@+id/information_cardview_information_about_app"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="@color/colorLightGray"
         app:cardCornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,12 +47,15 @@
                 android:id="@+id/information_text_information_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/information_about_title" />
+                android:layout_margin="5dp"
+                android:text="@string/information_about_title"
+                android:textAppearance="@style/SecondSubHeader" />
 
             <TextView
                 android:id="@+id/information_text_information_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="@string/information_about_app" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
