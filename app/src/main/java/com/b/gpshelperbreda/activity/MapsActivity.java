@@ -29,7 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    private void testRouteGen() {
+    private void testRouteGen() { //TODO remove after testing is completed
         DirectionApiManager directions = new DirectionApiManager(this, this);
         LatLng start = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(start));
@@ -53,10 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(51.526174,5.057324);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-        testRouteGen();
     }
 
     @Override
