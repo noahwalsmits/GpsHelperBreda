@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">GPS Helper Breda</string>
+    <string name="app_name">GPS Helper</string>
     <string name="title_activity_maps">Map</string>
+    <string name="information_name_activity">Informatie</string>
+    <string name="information_about_app">hier komt de app informatie</string>
+    <string name="information_about_title">hier komt de titel</string>
 </resources>
