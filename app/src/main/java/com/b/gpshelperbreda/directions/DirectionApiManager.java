@@ -10,6 +10,8 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.b.gpshelperbreda.data.Route;
+import com.b.gpshelperbreda.data.Waypoint;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
@@ -37,9 +39,19 @@ public class DirectionApiManager {
         this.listener = listener;
 
     }
-    //TODO documentation
-    public void drawRoute() {
-        //TODO make method drawing entire route
+
+    /**
+     * Calling this method will make the listener draw the entire route
+     * @param route The route to be drawn
+     */
+    public void generateDirections(Route route) { //TODO test
+        LatLng previous = null;
+        for (Waypoint waypoint : route.getWaypoints()) {
+            if (previous != null) {
+                this.generateDirections(previous, waypoint.getLatLng());
+            }
+            previous = waypoint.getLatLng();
+        }
     }
 
     //TODO allow for continuous route updates?
@@ -50,7 +62,7 @@ public class DirectionApiManager {
      * @param origin The starting point
      * @param destination The end point
      */
-    public void generateRoute(LatLng origin, LatLng destination) {
+    public void generateDirections(LatLng origin, LatLng destination) {
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 this.generateUrl(origin, destination),
@@ -134,7 +146,7 @@ public class DirectionApiManager {
 //
 //        @Override
 //        protected PolylineOptions doInBackground(LatLng... latLngs) {
-//            generateRoute(latLngs[0], latLngs[1]);
+//            generateDirections(latLngs[0], latLngs[1]);
 //            return null;
 //        }
 //
