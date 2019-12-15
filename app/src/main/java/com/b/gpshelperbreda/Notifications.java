@@ -2,11 +2,18 @@ package com.b.gpshelperbreda;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.b.gpshelperbreda.activity.MapsActivity;
+
+/**
+ * Class used to create push notifications
+ */
 public class Notifications {
     private static String CHANNEL_ID = "GPS Helper Breda";
     private NotificationManager notificationManager;
@@ -27,20 +34,40 @@ public class Notifications {
         }
     }
 
-    public int sendNotification(String title, String description) {
+    /**
+     * Creates and sends a simple notification
+     * @param title The title of the notification
+     * @param description The description of the notification
+     * @param id Use the same id of a previous notification to update it
+     * @return he id of the notification, we currently do not utilize it
+     */
+    public int sendNotification(String title, String description, int id) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_launcher_foreground) //TODO get custom icon
+        builder.setSmallIcon(R.drawable.ic_launcher_foreground) //TODO get custom icon (probably app launcher icon)
                 .setContentTitle(title)
                 .setContentText(description)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(description))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        int id = this.nextId();
+        //TODO set content intent?
         notificationManager.notify(id, builder.build());
         return id;
     }
 
+    /**
+     * Creates and sends a simple notification with a unique id
+     * @param title The title of the notification
+     * @param description The description of the notification
+     * @return The id of the notification, we currently do not utilize it
+     */
+    public int sendNotification(String title, String description) {
+        return this.sendNotification(title, description, this.nextId());
+    }
+
+    /**
+     * Get a new unique id for a notification
+     * @return An integer that is more than 0
+     */
     private int nextId() {
         this.currentId++;
         return this.currentId;

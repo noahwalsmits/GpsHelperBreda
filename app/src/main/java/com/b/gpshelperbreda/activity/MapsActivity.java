@@ -3,16 +3,21 @@ package com.b.gpshelperbreda.activity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.b.gpshelperbreda.R;
+import com.b.gpshelperbreda.data.RouteFactory;
+import com.b.gpshelperbreda.directions.DirectionApiListener;
+import com.b.gpshelperbreda.directions.DirectionApiManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener {
 
     private GoogleMap mMap;
 
@@ -26,6 +31,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    private void testRouteGen() { //TODO remove after testing is completed
+        DirectionApiManager directions = new DirectionApiManager(this, this);
+//        LatLng start = new LatLng(51.526174,5.057324);
+//        mMap.addMarker(new MarkerOptions().position(start));
+//        LatLng end = new LatLng(53.097141, 6.259557);
+//        mMap.addMarker(new MarkerOptions().position(end));
+//        directions.generateDirections(start, end);
+        
+//        directions.generateDirections(new RouteFactory(this).getRouteFromId(1));
+    }
 
     /**
      * Manipulates the map once available.
@@ -41,8 +56,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        testRouteGen();//todo remove after testing
+    }
+
+    @Override
+    public void routeLineAvailable(PolylineOptions polylineOptions) {
+        //TODO have activity team customize the polyline to fit the style
+        mMap.addPolyline(polylineOptions);
+    }
+
+    @Override
+    public void onResponseError(Error error) {
+        Toast.makeText(this, "Could not connect with Directions Api", Toast.LENGTH_SHORT);
     }
 }
