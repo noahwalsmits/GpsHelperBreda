@@ -55,10 +55,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //testRouteGen();//
     }
 
     @Override
-    public void routeLine(PolylineOptions polylineOptions) {
+    public void routeLineAvailable(PolylineOptions polylineOptions) {
         //TODO have activity team customize the polyline to fit the style
         mMap.addPolyline(polylineOptions);
     }

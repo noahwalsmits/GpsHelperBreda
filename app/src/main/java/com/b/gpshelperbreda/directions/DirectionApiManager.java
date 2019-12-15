@@ -11,7 +11,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 
@@ -19,10 +18,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * The class used to interact with the directions api
+ */
 public class DirectionApiManager {
     private Context context;
     private RequestQueue queue;
@@ -39,11 +37,21 @@ public class DirectionApiManager {
         this.listener = listener;
 
     }
+    //TODO documentation
+    public void drawRoute() {
+        //TODO make method drawing entire route
+    }
 
     //TODO allow for continuous route updates?
     //TODO make asynchronous
+
+    /**
+     * Calling this method will make the listener draw a route between the points
+     * @param origin The starting point
+     * @param destination The end point
+     */
     public void generateRoute(LatLng origin, LatLng destination) {
-        final JsonObjectRequest request = new JsonObjectRequest(
+        JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 this.generateUrl(origin, destination),
                 null,
@@ -63,7 +71,7 @@ public class DirectionApiManager {
                 }
         );
 
-        request.setRetryPolicy(new RetryPolicy() {
+        request.setRetryPolicy(new RetryPolicy() { //TODO
             @Override
             public int getCurrentTimeout() {
                 return 0;
@@ -83,6 +91,12 @@ public class DirectionApiManager {
         this.queue.add(request);
     }
 
+    /**
+     * Creates a url to make a request to the directions api
+     * @param origin The starting point of the route
+     * @param destination The end point of the route
+     * @return A url that can be used to make a request to the directions api
+     */
     private String generateUrl(LatLng origin, LatLng destination) {
         String originText = origin.latitude + "," + origin.longitude;
         String destinationText = destination.latitude + "," + destination.longitude;
@@ -92,7 +106,7 @@ public class DirectionApiManager {
         return fullUrl;
     }
 
-    private void handleResponse(JSONObject response) { //TODO make asynchronous
+    private void handleResponse(JSONObject response) {
         try {
             JSONArray routes = response.getJSONArray("routes");
             for (int i = 0; i < routes.length(); i++) {                     //for each route
@@ -108,12 +122,25 @@ public class DirectionApiManager {
                         lineOptions.addAll(PolyUtil.decode(encoded));
                     }
                 }
-                this.listener.routeLine(lineOptions);
+                this.listener.routeLineAvailable(lineOptions);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+//    private class DirectionsTask extends AsyncTask<LatLng, Integer, PolylineOptions> {
+//
+//        @Override
+//        protected PolylineOptions doInBackground(LatLng... latLngs) {
+//            generateRoute(latLngs[0], latLngs[1]);
+//            return null;
+//        }
+//
+//        protected void onPostExecute(PolylineOptions polylineOptions) {
+//
+//        }
+//    }
 
 }

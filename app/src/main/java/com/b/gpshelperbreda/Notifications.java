@@ -2,11 +2,18 @@ package com.b.gpshelperbreda;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.b.gpshelperbreda.activity.MapsActivity;
+
+/**
+ * Class used to create push notifications
+ */
 public class Notifications {
     private static String CHANNEL_ID = "GPS Helper Breda";
     private NotificationManager notificationManager;
@@ -27,6 +34,12 @@ public class Notifications {
         }
     }
 
+    /**
+     * Creates and sends a simple notifications
+     * @param title The title of the notification
+     * @param description The description of the notification
+     * @return The id of the notification, we currently do not utilize it
+     */
     public int sendNotification(String title, String description) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID);
         builder.setSmallIcon(R.drawable.ic_launcher_foreground) //TODO get custom icon (probably app launcher icon)
@@ -35,7 +48,7 @@ public class Notifications {
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(description))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
+        //TODO set content intent?
         int id = this.nextId();
         notificationManager.notify(id, builder.build());
         return id;
