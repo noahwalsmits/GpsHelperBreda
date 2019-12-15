@@ -3,6 +3,7 @@ package com.b.gpshelperbreda.directions;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -55,8 +56,6 @@ public class DirectionApiManager {
     }
 
     //TODO allow for continuous route updates?
-    //TODO make asynchronous
-
     /**
      * Calling this method will make the listener draw a route between the points
      * @param origin The starting point
@@ -83,22 +82,8 @@ public class DirectionApiManager {
                 }
         );
 
-        request.setRetryPolicy(new RetryPolicy() { //TODO
-            @Override
-            public int getCurrentTimeout() {
-                return 0;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 0;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
+        request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         this.queue.add(request);
     }

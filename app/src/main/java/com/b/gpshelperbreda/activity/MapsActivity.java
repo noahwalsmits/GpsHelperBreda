@@ -3,8 +3,10 @@ package com.b.gpshelperbreda.activity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.b.gpshelperbreda.R;
+import com.b.gpshelperbreda.data.RouteFactory;
 import com.b.gpshelperbreda.directions.DirectionApiListener;
 import com.b.gpshelperbreda.directions.DirectionApiManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,11 +33,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void testRouteGen() { //TODO remove after testing is completed
         DirectionApiManager directions = new DirectionApiManager(this, this);
-        LatLng start = new LatLng(51.526174,5.057324);
-        mMap.addMarker(new MarkerOptions().position(start));
-        LatLng end = new LatLng(53.097141, 6.259557);
-        mMap.addMarker(new MarkerOptions().position(end));
-        directions.generateRoute(start, end);
+//        LatLng start = new LatLng(51.526174,5.057324);
+//        mMap.addMarker(new MarkerOptions().position(start));
+//        LatLng end = new LatLng(53.097141, 6.259557);
+//        mMap.addMarker(new MarkerOptions().position(end));
+//        directions.generateDirections(start, end);
+        
+//        directions.generateDirections(new RouteFactory(this).getRouteFromId(1));
     }
 
     /**
@@ -55,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        //testRouteGen();//
+        testRouteGen();//todo remove after testing
     }
 
     @Override
@@ -66,6 +70,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onResponseError(Error error) {
-        //TODO Display error if route cannot be obtained
+        Toast.makeText(this, "Could not connect with Directions Api", Toast.LENGTH_SHORT);
     }
 }

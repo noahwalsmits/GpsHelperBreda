@@ -10,7 +10,7 @@ public class RouteLogic {
     private LatLng userLocation;
     private Route route;
     private Waypoint nextWaypoint;
-    private Notifications notifications; //TODO move notification fucntions into listener method?
+    private Notifications notifications; //TODO move notification functions into listener method?
     RouteLogicListener listener;
 
     private static float MIN_DISTANCE = 10.0f; //TODO change
@@ -54,10 +54,12 @@ public class RouteLogic {
             if (!waypoint.isSeen()) {
                 this.nextWaypoint = waypoint;
                 this.listener.waypointAdvanced();
+                this.notifications.sendNotification("Punt bereikt", "U heeft " + waypoint.getName() + " bereikt."); //TODO translations
                 return;
             }
         }
         this.listener.routeCompleted();
+        this.notifications.sendNotification("Route klaar", "U heeft het einde van de route bereikt."); //TODO translations
         //TODO You have completed the route
     }
 
