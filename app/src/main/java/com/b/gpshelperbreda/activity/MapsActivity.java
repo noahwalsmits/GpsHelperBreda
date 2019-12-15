@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.b.gpshelperbreda.R;
+import com.b.gpshelperbreda.RouteLogicListener;
 import com.b.gpshelperbreda.data.RouteFactory;
 import com.b.gpshelperbreda.directions.DirectionApiListener;
 import com.b.gpshelperbreda.directions.DirectionApiManager;
@@ -19,7 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener, RouteLogicListener {
 
     private GoogleMap mMap;
 
@@ -61,7 +62,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(51.526174,5.057324);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        testRouteGen();//todo remove after testing
     }
 
     @Override
@@ -78,5 +78,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         //TODO update location on map and call RouteLogic.updateUserLocation()
+    }
+
+    @Override
+    public void waypointAdvanced() {
+        //TODO graphical implementation
+    }
+
+    @Override
+    public void routeCompleted() {
+        //TODO graphical implementation
+    }
+
+    @Override
+    public void offTrack() {
+        //TODO graphical implementation
     }
 }

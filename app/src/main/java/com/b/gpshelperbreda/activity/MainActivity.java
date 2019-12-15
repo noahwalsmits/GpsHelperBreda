@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         database = new Database(this);
-
-        Intent intent = new Intent(this, MapsActivity.class);//todo remove after testing
-        startActivity(intent);//todo remove after testing
     }
 
     public void buttonOnClick(View view) {
