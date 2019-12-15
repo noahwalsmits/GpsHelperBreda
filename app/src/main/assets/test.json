@@ -1,0 +1,38 @@
+[
+	{ "sequenceID" : 1,
+	"name" : "Stadhuis",
+	"description" : "Dit is het stadhuis van Breda.",
+	"latitude" : 52.48611111,
+	"longitude" : -6.340833333,
+	"routeID" : 1,
+	"photoID" : "1,2",
+	"seen" : false
+	},
+	{ "sequenceID" : 2,
+	"name" : "Antonius van Paduakerk",
+	"description" : "Dit is de Antonius van Paduakerk",
+	"latitude" : 52.30083333,
+	"longitude" : -6.530555556,
+	"routeID" : 1,
+	"photoID" : "1,1",
+	"seen" : false
+	},
+	{ "sequenceID" : 3,
+	"name" : "Bibliotheek",
+	"description" : "Lekker boekies lezen.",
+	"latitude" : 52.36111111,
+	"longitude" : -6.813055556,
+	"routeID" : 1,
+	"photoID" : "3,4",
+	"seen" : false
+	},
+	{ "sequenceID" : 4,
+	"name" : "Chassse theater",
+	"description" : "Lekker filmpie kijken.",
+	"latitude" : 52.31944444,
+	"longitude" : -7.322222222,
+	"routeID" : 1,
+	"photoID" : "4,5",
+	"seen" : false
+	}
+]
