@@ -2,18 +2,20 @@ package com.b.gpshelperbreda.data;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class Waypoint {
+import java.util.Arrays;
+
+public class Waypoint implements Comparable<Waypoint> {
 
     private int sequenceID;
     private String name;
     private String description;
-    private String latitude;
-    private String longitude;
+    private double latitude;
+    private double longitude;
     private int routeID;
     private int[] photoIDs;
     private boolean seen;
 
-    public Waypoint(String photoIDs, int routeID, int sequenceID, String latitude, String longitude, String name, String description, boolean seen) {
+    public Waypoint(String photoIDs, int routeID, int sequenceID, double latitude, double longitude, String name, String description, boolean seen) {
         this.photoIDs = convertStringToIntArr(photoIDs);
         this.routeID = routeID;
         this.sequenceID = sequenceID;
@@ -23,6 +25,34 @@ public class Waypoint {
         this.description = description;
         this.seen = seen;
     }
+
+    @Override
+    public int compareTo(Waypoint other) {
+        return (this.sequenceID - other.sequenceID);
+    }
+
+    @Override
+    public String toString() {
+        return "Waypoint{" +
+                "sequenceID=" + sequenceID +
+                ", name='" + name + '\'' +
+                ", seen=" + seen +
+                '}';
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Waypoint{" +
+//                "sequenceID=" + sequenceID +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", latitude='" + latitude + '\'' +
+//                ", longitude='" + longitude + '\'' +
+//                ", routeID=" + routeID +
+//                ", photoIDs=" + Arrays.toString(photoIDs) +
+//                ", seen=" + seen +
+//                '}';
+//    }
 
     private int[] convertStringToIntArr(String photoIDsString) {
         String[] stringArr = photoIDsString.split(",");
@@ -71,19 +101,19 @@ public class Waypoint {
         this.sequenceID = sequenceID;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

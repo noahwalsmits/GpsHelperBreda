@@ -32,13 +32,15 @@ public class Database extends SQLiteOpenHelper {
                     COLUMN_SEQUENCEID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME + " TEXT," +
                     COLUMN_DESCRIPTION + " TEXT," +
-                    COLUMN_LATITUDE + " TEXT," +
-                    COLUMN_LONGITUDE + " TEXT," +
+                    COLUMN_LATITUDE + " REAL," +
+                    COLUMN_LONGITUDE + " REAL," +
                     COLUMN_LATLNG + " BLOB," +
                     COLUMN_ROUTEID + " INTEGER," +
                     COLUMN_PHOTOIDS + " TEXT," +
                     COLUMN_SEEN + " INTEGER" +
                     ");";
+
+
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -60,6 +62,9 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public void insertValue(Waypoint waypoint) {
+
+        getWritableDatabase().delete(TABLE_NAME,"sequenceID=?",new String[]{waypoint.getSequenceID() + ""});
+
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_SEQUENCEID,waypoint.getSequenceID());
@@ -75,14 +80,19 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         db.insert(TABLE_NAME,null,values);
-        Log.i(TAG,"create() called, inserted into " + TABLE_NAME);
+        Log.i(TAG,"insertValue() called, inserted into " + TABLE_NAME);
+    }
+    public void dropTable(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(DROP_TABLE);
+        db.execSQL(CREATE_TABLE);
     }
 
     public ArrayList<Waypoint> readValues(){
         String query = "SELECT * FROM " + TABLE_NAME + ";";
         String[] args = new String[10];
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(query,args);
+        Cursor cursor = db.rawQuery(query,null);
         ArrayList<Waypoint> waypoints = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
@@ -92,8 +102,8 @@ public class Database extends SQLiteOpenHelper {
                 boolean seen = (cursor.getInt(cursor.getColumnIndex(COLUMN_SEEN)) == 1 ) ? true : false;
                 String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
                 String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
-                String latitude = cursor.getString(cursor.getColumnIndex(COLUMN_LATITUDE));
-                String longitude = cursor.getString(cursor.getColumnIndex(COLUMN_LONGITUDE));
+                double latitude = cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE));
+                double longitude = cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE));
                 String photoIDs = cursor.getString(cursor.getColumnIndex(COLUMN_PHOTOIDS));
 
                 waypoints.add(new Waypoint(photoIDs,routeID,sequenceID,latitude,longitude,name,description,seen));

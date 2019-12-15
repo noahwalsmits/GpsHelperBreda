@@ -1,5 +1,7 @@
 package com.b.gpshelperbreda.data;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Route {
@@ -7,11 +9,21 @@ public class Route {
     private String name;
     private ArrayList<Waypoint> waypoints;
 
-
-
     public Route(String name, ArrayList<Waypoint> waypoints) {
         this.name = name;
         this.waypoints = waypoints;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String result = "Route naam: " + name + "\n";
+
+        for (Waypoint wp: waypoints) {
+            result += wp.toString() + "\n";
+        }
+
+        return result;
     }
 
     //region getters and setters
