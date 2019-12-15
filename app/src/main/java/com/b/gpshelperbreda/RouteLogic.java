@@ -4,6 +4,7 @@ import android.location.Location;
 
 import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.Waypoint;
+import com.b.gpshelperbreda.directions.LocationTrackerListener;
 import com.google.android.gms.maps.model.LatLng;
 
 public class RouteLogic {
@@ -11,7 +12,7 @@ public class RouteLogic {
     private Route route;
     private Waypoint nextWaypoint; //TODO instantiate
     private float distanceToNext;
-    private Notifications notifications; //TODO move notification functions into listener method?
+    private Notifications notifications; //TODO move notification functions into locationListener method?
     RouteLogicListener listener;
 
     private static float MIN_DISTANCE = 10.0f; //TODO change

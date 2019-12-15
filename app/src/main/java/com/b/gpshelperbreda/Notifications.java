@@ -2,14 +2,10 @@ package com.b.gpshelperbreda;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
-
-import com.b.gpshelperbreda.activity.MapsActivity;
 
 /**
  * Class used to create push notifications
@@ -36,9 +32,10 @@ public class Notifications {
 
     /**
      * Creates and sends a simple notification
-     * @param title The title of the notification
+     *
+     * @param title       The title of the notification
      * @param description The description of the notification
-     * @param id Use the same id of a previous notification to update it
+     * @param id          Use the same id of a previous notification to update it
      * @return he id of the notification, we currently do not utilize it
      */
     public int sendNotification(String title, String description, int id) {
@@ -56,7 +53,8 @@ public class Notifications {
 
     /**
      * Creates and sends a simple notification with a unique id
-     * @param title The title of the notification
+     *
+     * @param title       The title of the notification
      * @param description The description of the notification
      * @return The id of the notification, we currently do not utilize it
      */
@@ -66,6 +64,7 @@ public class Notifications {
 
     /**
      * Get a new unique id for a notification
+     *
      * @return An integer that is more than 0
      */
     private int nextId() {

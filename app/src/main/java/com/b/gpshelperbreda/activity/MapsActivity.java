@@ -2,6 +2,7 @@ package com.b.gpshelperbreda.activity;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import com.b.gpshelperbreda.R;
 import com.b.gpshelperbreda.data.RouteFactory;
 import com.b.gpshelperbreda.directions.DirectionApiListener;
 import com.b.gpshelperbreda.directions.DirectionApiManager;
+import com.b.gpshelperbreda.directions.LocationTrackerListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,7 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener {
 
     private GoogleMap mMap;
 
@@ -71,5 +73,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onResponseError(Error error) {
         Toast.makeText(this, "Could not connect with Directions Api", Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        //TODO update location on map and call RouteLogic.updateUserLocation()
     }
 }

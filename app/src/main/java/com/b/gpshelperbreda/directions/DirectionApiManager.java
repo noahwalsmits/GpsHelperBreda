@@ -7,7 +7,6 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -42,7 +41,8 @@ public class DirectionApiManager {
     }
 
     /**
-     * Calling this method will make the listener draw the entire route
+     * Calling this method will make the locationListener draw the entire route
+     *
      * @param route The route to be drawn
      */
     public void generateDirections(Route route) { //TODO test
@@ -56,9 +56,11 @@ public class DirectionApiManager {
     }
 
     //TODO allow for continuous route updates?
+
     /**
-     * Calling this method will make the listener draw a route between the points
-     * @param origin The starting point
+     * Calling this method will make the locationListener draw a route between the points
+     *
+     * @param origin      The starting point
      * @param destination The end point
      */
     public void generateDirections(LatLng origin, LatLng destination) {
@@ -90,7 +92,8 @@ public class DirectionApiManager {
 
     /**
      * Creates a url to make a request to the directions api
-     * @param origin The starting point of the route
+     *
+     * @param origin      The starting point of the route
      * @param destination The end point of the route
      * @return A url that can be used to make a request to the directions api
      */

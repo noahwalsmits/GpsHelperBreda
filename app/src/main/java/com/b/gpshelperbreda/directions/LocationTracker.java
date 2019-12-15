@@ -20,36 +20,35 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class LocationTracker extends Service implements ActivityCompat.OnRequestPermissionsResultCallback{
+public class LocationTracker extends Service implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     protected LocationManager locationManager;
-    protected LocationListener listener;
+    protected LocationListener locationListener;
+    private LocationTrackerListener listener;
     private final Context context;
     private static final int PERMISSION_REQUEST_CODE = 2000;
     private static final String PERMISSION_STRING = android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
-    public LocationTracker(Context context){
+    public LocationTracker(Context context, LocationTrackerListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
-    private void setLocationListner(){
-
-       String locationProvider = locationManager.GPS_PROVIDER;
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+    private void setLocationListner() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     (Activity) this.context,
-                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     0
             );
         }
 
 
-        listener = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-
+                listener.onLocationChanged(location);
             }
 
             @Override
@@ -88,7 +87,7 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
             ActivityCompat.requestPermissions((Activity) this.context, new String[]{PERMISSION_STRING}, PERMISSION_REQUEST_CODE);
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener); //TODO configure
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener); //TODO configure
     }
 
     @Nullable
