@@ -40,13 +40,12 @@ public class Notifications {
      */
     public int sendNotification(String title, String description, int id) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.context, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.icon) //TODO get custom icon (probably app launcher icon)
+        builder.setSmallIcon(R.drawable.icon)
                 .setContentTitle(title)
                 .setContentText(description)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(description))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        //TODO set content intent?
         notificationManager.notify(id, builder.build());
         return id;
     }

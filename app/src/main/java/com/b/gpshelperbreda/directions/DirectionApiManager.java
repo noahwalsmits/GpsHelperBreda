@@ -47,7 +47,7 @@ public class DirectionApiManager {
      *
      * @param route The route to be drawn
      */
-    public void generateDirections(Route route) { //TODO test
+    public void generateDirections(Route route) {
 
         ArrayList<Waypoint> newRoute = new ArrayList<>();
         for (Waypoint waypoint : route.getWaypoints()) {
@@ -66,8 +66,6 @@ public class DirectionApiManager {
 
         this.generateDirections(newRoute.get(newRoute.size() - 1).getLatLng(),newRoute.get(0).getLatLng());
     }
-
-    //TODO allow for continuous route updates?
 
     /**
      * Calling this method will make the locationListener draw a route between the points

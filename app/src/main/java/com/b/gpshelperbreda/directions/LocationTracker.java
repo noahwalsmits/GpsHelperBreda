@@ -85,12 +85,8 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
 
     @SuppressLint("MissingPermission")
     private void trackLocation() {
-//        if (ContextCompat.checkSelfPermission(this, PERMISSION_STRING)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions((Activity) this.context, new String[]{PERMISSION_STRING}, PERMISSION_REQUEST_CODE);
-//            return;
-//        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener); //TODO configure
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 3, locationListener);
     }
 
     @Nullable

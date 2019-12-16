@@ -81,17 +81,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private void testRouteGen() { //TODO remove after testing is completed
-        DirectionApiManager directions = new DirectionApiManager(this, this);
-//        LatLng start = new LatLng(51.526174,5.057324);
-//        mMap.addMarker(new MarkerOptions().position(start));
-//        LatLng end = new LatLng(53.097141, 6.259557);
-//        mMap.addMarker(new MarkerOptions().position(end));
-//        directions.generateDirections(start, end);
-
-//        directions.generateDirections(new RouteFactory(this).getRouteFromId(1));
-    }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -107,6 +96,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         MapStyleOptions mapStyleOptions = new MapStyleOptions(getResources().getString(R.string.map_style_resource));
         mMap.setMapStyle(mapStyleOptions);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.setOnMarkerClickListener(this);
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -116,7 +106,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-        directionApiManager.generateDirections(route);
+        //directionApiManager.generateDirections(route);
 
         for (Waypoint waypoint : route.getWaypoints()) {
             Marker marker = mMap.addMarker(new MarkerOptions().position(waypoint.getLatLng()).title(waypoint.getName()));
@@ -129,7 +119,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             System.out.println(marker.toString() + "TAG:" + marker.getTag());
             markers.add(marker);
-            //TODO KLEURTJES ASSIE DER GWEEST BEN
         }
     }
 
@@ -171,7 +160,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void routeLineAvailable(PolylineOptions polylineOptions) {
-        //TODO have activity team customize the polyline to fit the style
         mMap.addPolyline(polylineOptions);
     }
 
@@ -218,4 +206,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.route_offroute), Snackbar.LENGTH_LONG).show();
     }
 
+    public void centerCamera(View view) {
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(userLocation.getPosition())
+                .zoom(15)
+                .build();
+
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 }
