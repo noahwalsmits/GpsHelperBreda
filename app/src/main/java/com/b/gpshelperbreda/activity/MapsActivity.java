@@ -144,6 +144,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        for (Waypoint waypoint : route.getWaypoints()) {
+            if (waypoint.getSequenceID() == (int)marker.getTag()) {
+                Intent intent = new Intent(this, WaypointDetailedActivity.class);
+                intent.putExtra("WAYPOINT", waypoint);
+                startActivity(intent);
+            }
+        }
 
         return false;
     }
@@ -183,6 +190,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             .title("User"));
         }
         userLocation.setPosition(latLng);
+        userLocation.setTag(-1);
         routeLogic.updateUserLocation(latLng);
     }
 

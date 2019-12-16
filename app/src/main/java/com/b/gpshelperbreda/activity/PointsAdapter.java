@@ -1,5 +1,6 @@
 package com.b.gpshelperbreda.activity;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,9 +98,9 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder
                 @Override
                 public void onClick(View view)
                 {
-//                    Intent intent = new Intent(view.getContext(), DetailActivity.class);
-//                    intent.putExtra("WAYPOINT", waypoint);
-//                    view.getContext().startActivity(intent);
+                    Intent intent = new Intent(view.getContext(), WaypointDetailedActivity.class);
+                    intent.putExtra("WAYPOINT", waypoint);
+                    view.getContext().startActivity(intent);
                 }
             });
 
