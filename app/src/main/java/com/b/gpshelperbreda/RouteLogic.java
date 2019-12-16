@@ -23,7 +23,7 @@ public class RouteLogic {
 
     public RouteLogic(Route route, RouteLogicListener listener, Context context) {
         this.userLocation = userLocation;
-        this.context = context;
+        this.context = context; //replace with database
         this.route = route;
         this.listener = listener;
         this.nextWaypoint = route.getWaypoints().get(0);
