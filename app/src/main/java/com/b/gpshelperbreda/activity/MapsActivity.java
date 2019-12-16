@@ -189,24 +189,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void waypointAdvanced(Waypoint nextWaypoint) {
 
-        this.notifications.sendNotification("Punt bereikt", "U moet nu naar: " + nextWaypoint.getName() + ".", RouteLogic.NOTIFICATION_PROGRESS); //TODO translations
+        this.notifications.sendNotification(getResources().getString(R.string.waypoint_reached_title), getResources().getString(R.string.waypoint_reached) + nextWaypoint.getName() + ".", RouteLogic.NOTIFICATION_PROGRESS);
         for (Marker marker : markers) {
             if ((int)marker.getTag() == nextWaypoint.getSequenceID() - 1) {
                 marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             }
         }
-        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.waypoint_reached), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.waypoint_reached) + nextWaypoint.getName() + ".", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void routeCompleted() {
-        this.notifications.sendNotification("Route klaar", "U heeft het einde van de route bereikt.", RouteLogic.NOTIFICATION_PROGRESS); //TODO translations
+        this.notifications.sendNotification(getResources().getString(R.string.route_finished_title), getResources().getString(R.string.route_finished), RouteLogic.NOTIFICATION_PROGRESS);
         Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.route_finished), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void offTrack() {
-        this.notifications.sendNotification("U dwaalt af", "U bent een grote afstand van het volgende punt.", RouteLogic.NOTIFICATION_ONTRACK); //TODO translations
+        this.notifications.sendNotification(getResources().getString(R.string.route_offroute_title), getResources().getString(R.string.route_offroute), RouteLogic.NOTIFICATION_ONTRACK);
         Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.route_offroute), Snackbar.LENGTH_LONG).show();
     }
 
