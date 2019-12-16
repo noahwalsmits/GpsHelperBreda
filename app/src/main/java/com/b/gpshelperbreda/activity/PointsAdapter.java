@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b.gpshelperbreda.R;
@@ -15,40 +16,47 @@ import com.b.gpshelperbreda.data.Waypoint;
 
 import java.util.List;
 
-public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder> {
+public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder>
+{
 
-    private List<Waypoint> waypoints;
+    private List<Waypoint> dataset;
 
-    public PointsAdapter(List<Waypoint> waypoints){
-        this.waypoints = waypoints;
+    public PointsAdapter(List<Waypoint> waypoints)
+    {
+        this.dataset = waypoints;
     }
 
     //Deze klasse geeft aan dat de recyclerview gevult moet worden met de mural
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i)
+    {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout_waypoints, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view, dataset.get(i));
 
         return viewHolder;
     }
 
     //Deze methode vult de mural met informatie
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Waypoint waypoint = waypoints.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position)
+    {
+        Waypoint waypoint = dataset.get(position);
 
         TextView textTitle = holder.waypointTitle;
-        TextView textInfo = holder.waypointDescription;
+        TextView textVisited = holder.waypointVisited;
         ImageView imageView = holder.waypointImage;
 
         textTitle.setText(waypoint.getName());
-        textInfo.setText(waypoint.getDescription());
-        if (waypoint.getPhotoIDs()[0] == 0) {
+        textVisited.setText(waypoint.isSeen() ? R.string.waypoint_check : R.string.waypoint_todo);
+
+        if (waypoint.getPhotoIDs()[0] == 0)
+        {
             imageView.setImageResource(R.drawable.photo_no_picture);
-        } else {
+        } else
+        {
             String name = "photo_" + waypoint.getPhotoIDs()[0];
-            int resid = holder.itemView.getResources().getIdentifier(name, "drawable",holder.itemView.getContext().getPackageName());
+            int resid = holder.itemView.getResources().getIdentifier(name, "drawable", holder.itemView.getContext().getPackageName());
             imageView.setImageResource(resid);
             //TODO Fotos implementeren
         }
@@ -59,22 +67,43 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder
 
     //Deze methode stuurt terug hoeveel waypoinst er zijn
     @Override
-    public int getItemCount() {
-        return this.waypoints.size();
+    public int getItemCount()
+    {
+        return this.dataset.size();
     }
 
     //Deze klasse benoemd de objecten uit de mural xml
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView waypointTitle;
+        TextView waypointVisited;
+        ImageView waypointImage;
+        CardView cardView;
 
-        public TextView waypointTitle;
-        public TextView waypointDescription;
-        public ImageView waypointImage;
+        private Waypoint waypoint;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, final Waypoint waypoint)
+        {
             super(itemView);
+            this.waypoint = waypoint;
+
+            cardView = itemView.findViewById(R.id.cardview);
             waypointTitle = itemView.findViewById(R.id.waypoint_title);
-            waypointDescription = itemView.findViewById(R.id.waypoint_description);
+            waypointVisited = itemView.findViewById(R.id.waypoint_visited);
             waypointImage = itemView.findViewById(R.id.waypoint_image);
+
+            cardView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+//                    Intent intent = new Intent(view.getContext(), DetailActivity.class);
+//                    intent.putExtra("WAYPOINT", waypoint);
+//                    view.getContext().startActivity(intent);
+                }
+            });
+
         }
+
     }
 }

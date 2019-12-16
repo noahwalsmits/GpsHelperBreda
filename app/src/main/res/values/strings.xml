@@ -17,4 +17,6 @@
     <string name="agree">JA</string>
     <string name="decline">NEE</string>
     <string name="popup_question">Weet u zeker dat u de route voortgang wilt resetten?</string>
+    <string name="waypoint_check">U heeft deze bezienswaardigheid bezocht!</string>
+    <string name="waypoint_todo">U heeft deze bezienswaardigheid nog niet bezocht!</string>
 </resources>
