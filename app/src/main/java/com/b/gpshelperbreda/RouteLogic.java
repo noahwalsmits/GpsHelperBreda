@@ -15,7 +15,7 @@ public class RouteLogic {
     private Notifications notifications; //TODO move notification functions into locationListener method?
     RouteLogicListener listener;
 
-    private static float MIN_DISTANCE = 10.0f; //TODO change
+    private static float MIN_DISTANCE = 20.0f; //TODO change
     private static int NOTIFICATION_ONTRACK = -1;
     private static int NOTIFICATION_PROGRESS = -2;
 
@@ -99,7 +99,7 @@ public class RouteLogic {
                 this.distanceToNext = results[0];
 
                 this.nextWaypoint = waypoint;
-                this.listener.waypointAdvanced();
+                this.listener.waypointAdvanced(nextWaypoint);
                 this.notifications.sendNotification("Punt bereikt", "U moet nu naar: " + waypoint.getName() + ".", NOTIFICATION_PROGRESS); //TODO translations
                 return;
             }

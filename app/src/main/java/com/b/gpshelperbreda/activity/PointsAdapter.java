@@ -47,11 +47,17 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder
         this.waypoint = waypoints.get(position);
         TextView textTitle = viewHolder.muralTitle;
         TextView textInfo = viewHolder.muralInfo;
-        ImageView imageMural = viewHolder.muralImage;
+        ImageView imageView = viewHolder.muralImage;
 
         textTitle.setText(waypoint.getName());
         textInfo.setText(waypoint.getDescription());
-        imageMural = null;
+        if (waypoint.getPhotoIDs()[0] == 0) {
+            imageView.setImageResource(R.drawable.photo_no_picture);
+        } else {
+            int resid = holder.itemView.getResources().getIdentifier("photo_" + waypoint.getPhotoIDs()[0] + ".png", "drawable",holder.itemView.getContext().getPackageName());
+            imageView.setImageResource(resid);
+            //TODO Fotos implementeren
+        }
         //TODO: vullen met de info uit de waypoint klassen zodra die bestaat.
 
         // zoals textTitle.setText(waypoint.getTitle);
