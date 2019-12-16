@@ -41,7 +41,7 @@
 	"latitude" :51.59370278,
 	"longitude" : 4.788888889,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "5",
 	"seen" : false
 	},
 	{ "sequenceID" : 6,
@@ -59,7 +59,7 @@
 	"latitude" : 51.60129722,
 	"longitude" : 4.787916667,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "2,1",
 	"seen" : false
 	},
 	{ "sequenceID" : 8,
@@ -68,7 +68,7 @@
 	"latitude" : 51.59861111,
 	"longitude" : 4.788380556,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "4",
 	"seen" : false
 	},
 	{ "sequenceID" : 9,
@@ -77,7 +77,7 @@
 	"latitude" : 51.59916667,
 	"longitude" : 4.786341667,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "5",
 	"seen" : false
 	},
 	{ "sequenceID" : 10,
@@ -86,7 +86,7 @@
 	"latitude" : 51.59393611,
 	"longitude" : 4.782452778,
 	"routeID" : 1,
-	"photoIDs" : "1",
+	"photoIDs" : "11",
 	"seen" : false
 	},
 	{ "sequenceID" : 11,
@@ -95,7 +95,7 @@
 	"latitude" : 51.59416667,
 	"longitude" : 4.777777778,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "20",
 	"seen" : false
 	},
 	{ "sequenceID" : 12,
@@ -104,7 +104,7 @@
 	"latitude" : 51.5925000,
 	"longitude" : 4.781019444,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "10,16",
 	"seen" : false
 	},
 	{ "sequenceID" : 13,
@@ -113,7 +113,7 @@
 	"latitude" : 51.59115833,
 	"longitude" : 4.782777778,
 	"routeID" : 1,
-	"photoIDs" : "0",
+	"photoIDs" : "24,25",
 	"seen" : false
 	}
 ]
