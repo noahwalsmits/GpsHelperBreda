@@ -85,9 +85,6 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     public void resetDatabase(View view) {
-        database.resetTable();
-        new JsonParser(this).parseJson("waypoints.json");
-        routeFactory.getRouteFromId(1);
 
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -102,7 +99,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             public void onClick(View view)
             {
                 database.resetTable();
-                new JsonParser(MainActivity.this).parseJson("waypoints.json");
+                new JsonParser(view.getContext()).parseJson("waypoints.json");
+                route = routeFactory.getRouteFromId(1);
 
                 dialog.cancel();
             }
