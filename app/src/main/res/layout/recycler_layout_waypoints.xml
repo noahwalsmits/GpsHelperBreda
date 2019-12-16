@@ -32,7 +32,7 @@
                 android:layout_height="150dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="false"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

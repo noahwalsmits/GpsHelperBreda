@@ -1,10 +1,5 @@
 package com.b.gpshelperbreda.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,23 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
-import android.provider.ContactsContract;
-import android.util.JsonReader;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.b.gpshelperbreda.R;
 import com.b.gpshelperbreda.data.Database;
 import com.b.gpshelperbreda.data.JsonParser;
 import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.RouteFactory;
-import com.b.gpshelperbreda.data.Waypoint;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -47,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         }
 
         database = new Database(this);
-        if (!database.isTableFilled()){
+        if (!database.isTableFilled()) {
             new JsonParser(this).parseJson("waypoints.json");
         }
 
@@ -61,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
      */
     public void SelectRoute(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
-        intent.putExtra("ROUTE",route);
+        intent.putExtra("ROUTE", route);
         startActivity(intent);
     }
 
@@ -93,24 +83,25 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         Button yes = dialog.findViewById(R.id.bttnYes);
         Button no = dialog.findViewById(R.id.bttnNo);
 
-        yes.setOnClickListener(new View.OnClickListener()
-        {
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 database.resetTable();
                 new JsonParser(view.getContext()).parseJson("waypoints.json");
                 route = routeFactory.getRouteFromId(1);
 
                 dialog.cancel();
+
+                Intent i = getBaseContext().getPackageManager()
+                        .getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }
         });
 
-        no.setOnClickListener(new View.OnClickListener()
-        {
+        no.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 dialog.cancel();
             }
         });

@@ -101,10 +101,21 @@
         android:layout_height="48dp"
         android:layout_marginBottom="30dp"
         android:contentDescription="@string/AGS"
-        android:onClick="resetDatabase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ags_logo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="28dp"
+        android:background="#00FFFFFF"
+        android:onClick="resetDatabase"
+        android:text="Reset\nRoute"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

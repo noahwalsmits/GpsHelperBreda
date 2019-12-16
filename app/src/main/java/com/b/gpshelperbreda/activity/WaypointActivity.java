@@ -1,10 +1,10 @@
 package com.b.gpshelperbreda.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.b.gpshelperbreda.R;
 import com.b.gpshelperbreda.data.Waypoint;
@@ -24,7 +24,7 @@ public class WaypointActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.waypoint_recyclerview_waypoints);
 
-        pointsAdapter = new PointsAdapter((ArrayList<Waypoint>)getIntent().getExtras().getSerializable("WAYPOINTS"));
+        pointsAdapter = new PointsAdapter((ArrayList<Waypoint>) getIntent().getExtras().getSerializable("WAYPOINTS"));
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

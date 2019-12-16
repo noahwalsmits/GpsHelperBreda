@@ -3,7 +3,6 @@ package com.b.gpshelperbreda.directions;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 public class LocationTracker extends Service implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -83,10 +81,11 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
         }
     }
 
-    @SuppressLint("MissingPermission")
-    private void trackLocation() {
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 3, locationListener);
+    private void trackLocation() {
+        if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 3, locationListener);
+        }
     }
 
     @Nullable

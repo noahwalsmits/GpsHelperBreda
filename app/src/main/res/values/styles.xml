@@ -52,7 +52,7 @@
     <style name="normalText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/made</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="customPopupMenu" parent="Widget.AppCompat.PopupMenu">

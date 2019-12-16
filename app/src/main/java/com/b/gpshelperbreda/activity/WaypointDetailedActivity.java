@@ -1,10 +1,11 @@
 package com.b.gpshelperbreda.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.b.gpshelperbreda.R;
 import com.b.gpshelperbreda.data.Waypoint;
@@ -25,10 +26,10 @@ public class WaypointDetailedActivity extends AppCompatActivity {
         waypointDescription.setText(waypoint.getDescription());
 
         ImageView imageView = findViewById(R.id.picture);
-        if (waypoint.getPhotoIDs()[0] == 0)
-        {
-            imageView.setImageResource(R.drawable.photo_no_picture);
-        } else{
+        if (waypoint.getPhotoIDs()[0] == 0) {
+            //imageView.setImageResource(R.drawable.photo_no_picture);
+            imageView.setVisibility(View.GONE);
+        } else {
             String name = "photo_" + waypoint.getPhotoIDs()[0];
             int resid = getResources().getIdentifier(name, "drawable", getPackageName());
             imageView.setImageResource(resid);

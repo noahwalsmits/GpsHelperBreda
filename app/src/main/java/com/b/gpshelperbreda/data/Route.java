@@ -20,7 +20,7 @@ public class Route implements Serializable {
     public String toString() {
         String result = "Route naam: " + name + "\n";
 
-        for (Waypoint wp: waypoints) {
+        for (Waypoint wp : waypoints) {
             result += wp.toString() + "\n";
         }
 

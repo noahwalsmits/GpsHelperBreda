@@ -52,7 +52,7 @@ public class DirectionApiManager {
         ArrayList<Waypoint> newRoute = new ArrayList<>();
         for (Waypoint waypoint : route.getWaypoints()) {
             if (!waypoint.isSeen()) {
-               newRoute.add(waypoint);
+                newRoute.add(waypoint);
             }
         }
 
@@ -63,8 +63,9 @@ public class DirectionApiManager {
             }
             previous = waypoint.getLatLng();
         }
-
-        this.generateDirections(newRoute.get(newRoute.size() - 1).getLatLng(),newRoute.get(0).getLatLng());
+        if (newRoute.size() > 1) {
+            this.generateDirections(newRoute.get(newRoute.size() - 1).getLatLng(), newRoute.get(0).getLatLng());
+        }
     }
 
     /**
@@ -89,7 +90,7 @@ public class DirectionApiManager {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.wtf(tag, "onErrorResponse");
-                        System.out.println(error.toString());
+                        error.printStackTrace();
                     }
                 }
         );

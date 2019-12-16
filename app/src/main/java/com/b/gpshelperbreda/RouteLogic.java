@@ -6,7 +6,6 @@ import android.location.Location;
 import com.b.gpshelperbreda.data.Database;
 import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.Waypoint;
-import com.b.gpshelperbreda.directions.LocationTrackerListener;
 import com.google.android.gms.maps.model.LatLng;
 
 public class RouteLogic {
@@ -52,6 +51,7 @@ public class RouteLogic {
 
     /**
      * Method to update the user location and check if any waypoints have been reached.
+     *
      * @param userLocation The location of the user
      */
     public void updateUserLocation(LatLng userLocation) {
@@ -71,14 +71,12 @@ public class RouteLogic {
                 this.nextWaypoint.getLongitude(),
                 results);
 
-        if (results[0] < this.MIN_DISTANCE) {
+        if (results[0] < MIN_DISTANCE) {
             this.advanceWaypoint();
-            System.out.println("Ik ben er");
         }
-        if (results[0] > this.distanceToNext * 1.5) { //checks if not too far
+        if (results[0] > this.distanceToNext * 1.5) {
             this.listener.offTrack();
         }
-
     }
 
     /**

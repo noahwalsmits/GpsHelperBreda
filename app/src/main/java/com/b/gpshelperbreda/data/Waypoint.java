@@ -3,7 +3,6 @@ package com.b.gpshelperbreda.data;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 public class Waypoint implements Comparable<Waypoint>, Serializable {
 
@@ -64,7 +63,7 @@ public class Waypoint implements Comparable<Waypoint>, Serializable {
         return photoIDs;
     }
 
-    public LatLng getLatLng(){
+    public LatLng getLatLng() {
         return new LatLng(this.latitude, this.longitude);
     }
 
