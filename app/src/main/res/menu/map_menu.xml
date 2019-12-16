@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/waypoints"
+        android:title="@string/waypoint_name_activity" />
+    <item android:id="@+id/information"
+        android:title="@string/information_name_activity" />
+</menu>

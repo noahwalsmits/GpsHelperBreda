@@ -1,8 +1,16 @@
 package com.b.gpshelperbreda.activity;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 
 import com.b.gpshelperbreda.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,7 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, PopupMenu.OnMenuItemClickListener {
 
     private GoogleMap mMap;
 
@@ -44,5 +52,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    public void showMenu(View view) {
+        Context wrapper = new ContextThemeWrapper(this, R.style.customPopupMenu); //custom style
+        PopupMenu popup = new PopupMenu(wrapper, view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.map_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.information:
+                startActivity(new Intent(this, InformationActivity.class));
+                return true;
+            case R.id.waypoints:
+                startActivity(new Intent(this, WaypointActivity.class));
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
