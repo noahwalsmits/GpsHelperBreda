@@ -20,6 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * The class used to interact with the directions api
  */
@@ -46,15 +48,23 @@ public class DirectionApiManager {
      * @param route The route to be drawn
      */
     public void generateDirections(Route route) { //TODO test
-        LatLng previous = null;
+
+        ArrayList<Waypoint> newRoute = new ArrayList<>();
         for (Waypoint waypoint : route.getWaypoints()) {
+            if (!waypoint.isSeen()) {
+               newRoute.add(waypoint);
+            }
+        }
+
+        LatLng previous = null;
+        for (Waypoint waypoint : newRoute) {
             if (previous != null) {
                 this.generateDirections(previous, waypoint.getLatLng());
             }
             previous = waypoint.getLatLng();
         }
 
-        this.generateDirections(route.getWaypoints().get(route.getWaypoints().size() - 1).getLatLng(),route.getWaypoints().get(0).getLatLng());
+        this.generateDirections(newRoute.get(newRoute.size() - 1).getLatLng(),newRoute.get(0).getLatLng());
     }
 
     //TODO allow for continuous route updates?

@@ -1,7 +1,9 @@
 package com.b.gpshelperbreda;
 
+import android.content.Context;
 import android.location.Location;
 
+import com.b.gpshelperbreda.data.Database;
 import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.Waypoint;
 import com.b.gpshelperbreda.directions.LocationTrackerListener;
@@ -12,17 +14,17 @@ public class RouteLogic {
     private Route route;
     private Waypoint nextWaypoint; //TODO instantiate
     private float distanceToNext;
-    private Notifications notifications; //TODO move notification functions into locationListener method?
+    private Context context;
     RouteLogicListener listener;
 
     private static float MIN_DISTANCE = 20.0f; //TODO change
-    private static int NOTIFICATION_ONTRACK = -1;
-    private static int NOTIFICATION_PROGRESS = -2;
+    public static int NOTIFICATION_ONTRACK = -1;
+    public static int NOTIFICATION_PROGRESS = -2;
 
-    public RouteLogic(Route route, Notifications notifications, RouteLogicListener listener) {
+    public RouteLogic(Route route, RouteLogicListener listener, Context context) {
         this.userLocation = userLocation;
+        this.context = context;
         this.route = route;
-        this.notifications = notifications;
         this.listener = listener;
         this.nextWaypoint = route.getWaypoints().get(0);
         //this.firstWaypoint();
@@ -75,7 +77,6 @@ public class RouteLogic {
         }
         if (results[0] > this.distanceToNext * 1.5) { //checks if not too far
             this.listener.offTrack();
-            this.notifications.sendNotification("U dwaalt af", "U bent een grote afstand van het volgende punt.", NOTIFICATION_ONTRACK); //TODO translations
         }
 
     }
@@ -85,6 +86,7 @@ public class RouteLogic {
      */
     private void advanceWaypoint() {
         this.nextWaypoint.setSeen(true); //TODO save this in the database
+        new Database(this.context).insertValue(nextWaypoint);
         int index = this.route.getWaypoints().indexOf(nextWaypoint);
         for (int i = index; i < this.route.getWaypoints().size(); i++) { //TODO check if waypoints are sorted in the right order
             Waypoint waypoint = this.route.getWaypoints().get(i);
@@ -100,12 +102,10 @@ public class RouteLogic {
 
                 this.nextWaypoint = waypoint;
                 this.listener.waypointAdvanced(nextWaypoint);
-                this.notifications.sendNotification("Punt bereikt", "U moet nu naar: " + waypoint.getName() + ".", NOTIFICATION_PROGRESS); //TODO translations
                 return;
             }
         }
         this.listener.routeCompleted();
-        this.notifications.sendNotification("Route klaar", "U heeft het einde van de route bereikt.", NOTIFICATION_PROGRESS); //TODO translations
     }
 
 }

@@ -6,15 +6,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.provider.ContactsContract;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +34,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private Route route;
+    private Database database;
+    private RouteFactory routeFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +46,12 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             askPermission(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
-        new JsonParser(this).parseJson("waypoints.json");
+        database = new Database(this);
+        if (!database.isTableFilled()){
+            new JsonParser(this).parseJson("waypoints.json");
+        }
 
-        RouteFactory routeFactory = new RouteFactory(this);
+        routeFactory = new RouteFactory(this);
 
         route = routeFactory.getRouteFromId(1);
     }
@@ -73,5 +82,42 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Toast.makeText(this, "Location permission not accepted.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void resetDatabase(View view) {
+        database.resetTable();
+        new JsonParser(this).parseJson("waypoints.json");
+        routeFactory.getRouteFromId(1);
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_reset_database);
+
+        Button yes = dialog.findViewById(R.id.bttnYes);
+        Button no = dialog.findViewById(R.id.bttnNo);
+
+        yes.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                database.resetTable();
+                new JsonParser(MainActivity.this).parseJson("waypoints.json");
+
+                dialog.cancel();
+            }
+        });
+
+        no.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+
     }
 }
