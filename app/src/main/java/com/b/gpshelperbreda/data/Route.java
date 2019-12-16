@@ -2,9 +2,10 @@ package com.b.gpshelperbreda.data;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Route {
+public class Route implements Serializable {
 
     private String name;
     private ArrayList<Waypoint> waypoints;

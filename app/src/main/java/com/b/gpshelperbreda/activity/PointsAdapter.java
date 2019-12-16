@@ -49,6 +49,9 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.ViewHolder
         TextView textInfo = viewHolder.muralInfo;
         ImageView imageMural = viewHolder.muralImage;
 
+        textTitle.setText(waypoint.getName());
+        textInfo.setText(waypoint.getDescription());
+        imageMural = null;
         //TODO: vullen met de info uit de waypoint klassen zodra die bestaat.
 
         // zoals textTitle.setText(waypoint.getTitle);

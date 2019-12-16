@@ -2,9 +2,10 @@ package com.b.gpshelperbreda.data;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Waypoint implements Comparable<Waypoint> {
+public class Waypoint implements Comparable<Waypoint>, Serializable {
 
     private int sequenceID;
     private String name;

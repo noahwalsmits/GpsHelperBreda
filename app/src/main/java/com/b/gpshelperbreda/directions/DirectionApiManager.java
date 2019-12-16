@@ -53,6 +53,8 @@ public class DirectionApiManager {
             }
             previous = waypoint.getLatLng();
         }
+
+        this.generateDirections(route.getWaypoints().get(route.getWaypoints().size() - 1).getLatLng(),route.getWaypoints().get(0).getLatLng());
     }
 
     //TODO allow for continuous route updates?

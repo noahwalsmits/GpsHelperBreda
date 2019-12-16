@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -14,23 +15,38 @@ import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.b.gpshelperbreda.Notifications;
 import com.b.gpshelperbreda.R;
+import com.b.gpshelperbreda.RouteLogic;
 import com.b.gpshelperbreda.RouteLogicListener;
+import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.RouteFactory;
+import com.b.gpshelperbreda.data.Waypoint;
 import com.b.gpshelperbreda.directions.DirectionApiListener;
 import com.b.gpshelperbreda.directions.DirectionApiManager;
+import com.b.gpshelperbreda.directions.LocationTracker;
 import com.b.gpshelperbreda.directions.LocationTrackerListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener, RouteLogicListener, PopupMenu.OnMenuItemClickListener {
 
     private GoogleMap mMap;
+    private Route route;
+
+    private DirectionApiManager directionApiManager;
+    private Marker userLocation;
+
+    private LocationTracker locationTracker;
+    private RouteLogic routeLogic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +56,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        route = (Route) getIntent().getExtras().getSerializable("ROUTE");
+
+        directionApiManager = new DirectionApiManager(this,this);
+
+        locationTracker = new LocationTracker(this,this, (LocationManager) getSystemService(Context.LOCATION_SERVICE));
+
+        routeLogic = new RouteLogic(route,new Notifications(this),this);
+
     }
 
     private void testRouteGen() { //TODO remove after testing is completed
@@ -66,10 +91,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(51.526174, 5.057324);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(route.getWaypoints().get(0).getLatLng())
+                .zoom(20)
+                .build();
+
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        //directionApiManager.generateDirections(route);
+
+        for (Waypoint waypoint : route.getWaypoints()) {
+            mMap.addMarker(new MarkerOptions().position(waypoint.getLatLng()).title(waypoint.getName()));
+        }
     }
 
     public void showMenu(View view) {
@@ -88,7 +121,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(new Intent(this, InformationActivity.class));
                 return true;
             case R.id.waypoints:
-                startActivity(new Intent(this, WaypointActivity.class));
+                startActivity(new Intent(this, WaypointActivity.class).putExtra("WAYPOINTS",route.getWaypoints()));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -107,7 +140,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(Location location) {
-        //TODO update location on map and call RouteLogic.updateUserLocation()
+        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+        if (userLocation == null) {
+            userLocation = mMap.addMarker(new MarkerOptions()
+            .position(latLng)
+            .title("User"));
+        }
+        userLocation.setPosition(latLng);
+        routeLogic.updateUserLocation(latLng);
     }
 
     @Override

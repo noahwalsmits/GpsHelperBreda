@@ -19,12 +19,13 @@ public class RouteLogic {
     private static int NOTIFICATION_ONTRACK = -1;
     private static int NOTIFICATION_PROGRESS = -2;
 
-    public RouteLogic(LatLng userLocation, Route route, Notifications notifications, RouteLogicListener listener) {
+    public RouteLogic(Route route, Notifications notifications, RouteLogicListener listener) {
         this.userLocation = userLocation;
         this.route = route;
         this.notifications = notifications;
         this.listener = listener;
-        this.firstWaypoint();
+        this.nextWaypoint = route.getWaypoints().get(0);
+        //this.firstWaypoint();
     }
 
     /**
@@ -70,6 +71,7 @@ public class RouteLogic {
 
         if (results[0] < this.MIN_DISTANCE) {
             this.advanceWaypoint();
+            System.out.println("Ik ben er");
         }
         if (results[0] > this.distanceToNext * 1.5) { //checks if not too far
             this.listener.offTrack();

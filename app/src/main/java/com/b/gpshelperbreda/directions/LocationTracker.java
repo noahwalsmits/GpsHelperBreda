@@ -2,6 +2,7 @@ package com.b.gpshelperbreda.directions;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -30,20 +31,22 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
     private static final String PERMISSION_STRING = android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
-    public LocationTracker(Context context, LocationTrackerListener listener) {
+    public LocationTracker(Context context, LocationTrackerListener listener, LocationManager locationManager) {
         this.context = context;
         this.listener = listener;
+        this.locationManager = locationManager;
+        setLocationListener();
+        trackLocation();
     }
 
-    private void setLocationListner() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    (Activity) this.context,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    0
-            );
-        }
-
+    private void setLocationListener() {
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(
+//                    (Activity) this.context,
+//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+//                    0
+//            );
+//        }
 
         locationListener = new LocationListener() {
             @Override
@@ -66,7 +69,6 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
                 Log.d("Debug", "Provider disabled");
             }
         };
-        this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
 
 
@@ -81,12 +83,13 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void trackLocation() {
-        if (ContextCompat.checkSelfPermission(this, PERMISSION_STRING)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions((Activity) this.context, new String[]{PERMISSION_STRING}, PERMISSION_REQUEST_CODE);
-            return;
-        }
+//        if (ContextCompat.checkSelfPermission(this, PERMISSION_STRING)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions((Activity) this.context, new String[]{PERMISSION_STRING}, PERMISSION_REQUEST_CODE);
+//            return;
+//        }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener); //TODO configure
     }
 
