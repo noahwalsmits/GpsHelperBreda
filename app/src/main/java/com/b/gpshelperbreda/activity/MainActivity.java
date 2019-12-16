@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 
     private Route route;
     private Database database;
+    private RouteFactory routeFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             new JsonParser(this).parseJson("waypoints.json");
         }
 
-        RouteFactory routeFactory = new RouteFactory(this);
+        routeFactory = new RouteFactory(this);
 
         route = routeFactory.getRouteFromId(1);
     }
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     public void resetDatabase(View view) {
+        database.resetTable();
+        new JsonParser(this).parseJson("waypoints.json");
+        routeFactory.getRouteFromId(1);
 
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

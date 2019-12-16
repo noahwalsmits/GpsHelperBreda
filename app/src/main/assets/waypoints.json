@@ -24,7 +24,7 @@
 	"longitude" : 4.787130556,
 	"routeID" : 1,
 	"photoIDs" : "0",
-	"seen" : true
+	"seen" : false
 	},
 	{ "sequenceID" : 4,
 	"name" : "Chassse theater",
@@ -51,7 +51,7 @@
 	"longitude" : 4.785463889,
 	"routeID" : 1,
 	"photoIDs" : "0",
-	"seen" : true
+	"seen" : false
 	},
 	{ "sequenceID" : 7,
 	"name" : "VVV",
@@ -69,7 +69,7 @@
 	"longitude" : 4.788380556,
 	"routeID" : 1,
 	"photoIDs" : "0",
-	"seen" : true
+	"seen" : false
 	},
 	{ "sequenceID" : 9,
 	"name" : "The Light House",

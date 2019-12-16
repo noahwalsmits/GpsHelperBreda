@@ -43,7 +43,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener, RouteLogicListener, PopupMenu.OnMenuItemClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener, RouteLogicListener, PopupMenu.OnMenuItemClickListener, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private Route route;
@@ -77,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         locationTracker = new LocationTracker(this,this, (LocationManager) getSystemService(Context.LOCATION_SERVICE));
 
-        routeLogic = new RouteLogic(route,this);
+        routeLogic = new RouteLogic(route,this,this);
 
     }
 
@@ -107,6 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         MapStyleOptions mapStyleOptions = new MapStyleOptions(getResources().getString(R.string.map_style_resource));
         mMap.setMapStyle(mapStyleOptions);
+        mMap.setOnMarkerClickListener(this);
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(route.getWaypoints().get(0).getLatLng())
@@ -115,21 +116,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-        //directionApiManager.generateDirections(route);
+        directionApiManager.generateDirections(route);
 
         for (Waypoint waypoint : route.getWaypoints()) {
             Marker marker = mMap.addMarker(new MarkerOptions().position(waypoint.getLatLng()).title(waypoint.getName()));
             marker.setTag(waypoint.getSequenceID());
             if (waypoint.isSeen()) {
-                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+            } else {
+                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
             }
 
             System.out.println(marker.toString() + "TAG:" + marker.getTag());
             markers.add(marker);
             //TODO KLEURTJES ASSIE DER GWEEST BEN
         }
-
     }
+
 
     public void showMenu(View view) {
         Context wrapper = new ContextThemeWrapper(this, R.style.customPopupMenu); //custom style
@@ -137,6 +140,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.map_menu);
         popup.show();
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        return false;
     }
 
     @Override
@@ -156,7 +165,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void routeLineAvailable(PolylineOptions polylineOptions) {
         //TODO have activity team customize the polyline to fit the style
-        mMap.addPolyline(polylineOptions.color(Color.CYAN));
+        mMap.addPolyline(polylineOptions);
     }
 
     @Override
@@ -170,7 +179,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (userLocation == null) {
             userLocation = mMap.addMarker(new MarkerOptions()
             .position(latLng)
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_user2))
             .title("User"));
         }
         userLocation.setPosition(latLng);
@@ -183,21 +192,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         this.notifications.sendNotification("Punt bereikt", "U moet nu naar: " + nextWaypoint.getName() + ".", RouteLogic.NOTIFICATION_PROGRESS); //TODO translations
         for (Marker marker : markers) {
             if ((int)marker.getTag() == nextWaypoint.getSequenceID() - 1) {
-                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             }
         }
-        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.waypoint_reached), Snackbar.LENGTH_LONG);
+        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.waypoint_reached), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void routeCompleted() {
         this.notifications.sendNotification("Route klaar", "U heeft het einde van de route bereikt.", RouteLogic.NOTIFICATION_PROGRESS); //TODO translations
-        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.waypoint_reached), Snackbar.LENGTH_LONG);
+        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.route_finished), Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void offTrack() {
         this.notifications.sendNotification("U dwaalt af", "U bent een grote afstand van het volgende punt.", RouteLogic.NOTIFICATION_ONTRACK); //TODO translations
-        //TODO graphical implementation
+        Snackbar.make(getWindow().getDecorView().getRootView(),getResources().getString(R.string.route_offroute), Snackbar.LENGTH_LONG).show();
     }
+
 }
