@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorBlack</item>
         <item name="colorPrimaryDark">@color/colorGray</item>
@@ -36,11 +36,6 @@
     <style name="RouteButton" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorLightGray</item>
     </style>
-    <style name="LogoHeader" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:fontFamily">@font/made</item>
-        <item name="android:textSize">32dp</item>
-    </style>
 
     <style name="SubHeader" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorGray</item>
@@ -58,6 +53,14 @@
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/made</item>
         <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="customPopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:itemBackground">@color/transparent</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/made</item>
     </style>
 
 </resources>

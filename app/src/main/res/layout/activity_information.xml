@@ -10,8 +10,8 @@
         android:id="@+id/information_text_name_application"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAppearance="@style/LogoHeader"
+        android:text="@string/logo_name"
+        android:textAppearance="@style/Logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,11 +20,12 @@
         android:id="@+id/information_text_name_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
         android:text="@string/information_name_activity"
         android:textAppearance="@style/LogoSubText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/information_text_name_application" />
+        app:layout_constraintTop_toTopOf="@+id/information_text_name_application" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/information_cardview_information_about_app"
@@ -40,7 +41,8 @@
         <LinearLayout
             android:id="@+id/information_constrain_cardview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <TextView
