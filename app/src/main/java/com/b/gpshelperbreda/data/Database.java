@@ -44,6 +44,8 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
+    private static final String CHECK_TABLE = "SELECT count(*) FROM " + TABLE_NAME;
+
     public Database (Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
@@ -62,7 +64,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public void insertValue(Waypoint waypoint) {
-
         getWritableDatabase().delete(TABLE_NAME,"sequenceID=?",new String[]{waypoint.getSequenceID() + ""});
 
         ContentValues values = new ContentValues();
@@ -82,7 +83,19 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_NAME,null,values);
         Log.i(TAG,"insertValue() called, inserted into " + TABLE_NAME);
     }
-    public void dropTable(){
+
+    public boolean isTableFilled(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(CHECK_TABLE, null);
+        cursor.moveToFirst();
+        int icount = cursor.getInt(0);
+        if(icount != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void resetTable(){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(DROP_TABLE);
         db.execSQL(CREATE_TABLE);

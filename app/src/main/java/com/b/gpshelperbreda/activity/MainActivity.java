@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private Route route;
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
             askPermission(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
-        new JsonParser(this).parseJson("waypoints.json");
+        database = new Database(this);
+        if (!database.isTableFilled()){
+            new JsonParser(this).parseJson("waypoints.json");
+        }
 
         RouteFactory routeFactory = new RouteFactory(this);
 
@@ -73,5 +77,10 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 Toast.makeText(this, "Location permission not accepted.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public void resetDatabase(View view) {
+        database.resetTable();
+        new JsonParser(this).parseJson("waypoints.json");
     }
 }

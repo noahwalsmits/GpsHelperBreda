@@ -4,10 +4,12 @@
     <string name="logo_location">Breda</string>
     <string name="title_activity_maps">Map</string>
     <string name="RouteSelectorText">Kies route:</string>
-    <string name="Route">Route 1</string>
+    <string name="Route">Historische KM</string>
     <string name="AGS">AGS</string>
     <string name="information_name_activity">Informatie</string>
     <string name="information_about_title">Uitleg app</string>
     <string name="information_about_app">In deze applicatie staat een kaart met een vooraf gekozen route. Met behulp van deze applicatie kan de route gelopen worden. De route loopt tussen de verschillende waypoints. Bij ieder waypoint zal er extra informatie getoond worden. Als er van de route wordt afgeweken laat de applicatie dit weten. Succes en veel wandel plezier!</string>
     <string name="waypoint_name_activity">Bezienswaardigheden</string>
+    <string name="waypoint_reached">Je bent aangekomen bij een bezienswaardigheid.</string>
+    <string name="route_finished">Je hebt de route voltooid.</string>
 </resources>

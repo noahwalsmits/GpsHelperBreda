@@ -20,6 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * The class used to interact with the directions api
  */
@@ -46,8 +48,16 @@ public class DirectionApiManager {
      * @param route The route to be drawn
      */
     public void generateDirections(Route route) { //TODO test
-        LatLng previous = null;
+
+        ArrayList<Waypoint> newRoute = new ArrayList<>();
         for (Waypoint waypoint : route.getWaypoints()) {
+            if (!waypoint.isSeen()) {
+               newRoute.add(waypoint);
+            }
+        }
+
+        LatLng previous = null;
+        for (Waypoint waypoint : newRoute) {
             if (previous != null) {
                 this.generateDirections(previous, waypoint.getLatLng());
             }
