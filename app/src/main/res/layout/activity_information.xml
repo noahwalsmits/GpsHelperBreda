@@ -62,4 +62,15 @@
                 android:textAppearance="@style/normalText" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/AGSLogo4"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="30dp"
+        android:contentDescription="@string/AGS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ags_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
