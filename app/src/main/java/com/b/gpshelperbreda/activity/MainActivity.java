@@ -6,15 +6,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.provider.ContactsContract;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,5 +88,36 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         database.resetTable();
         new JsonParser(this).parseJson("waypoints.json");
         routeFactory.getRouteFromId(1);
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_reset_database);
+
+        Button yes = dialog.findViewById(R.id.bttnYes);
+        Button no = dialog.findViewById(R.id.bttnNo);
+
+        yes.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                database.resetTable();
+                new JsonParser(MainActivity.this).parseJson("waypoints.json");
+
+                dialog.cancel();
+            }
+        });
+
+        no.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+
     }
 }

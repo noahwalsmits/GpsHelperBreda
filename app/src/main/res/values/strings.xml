@@ -14,4 +14,7 @@
     <string name="waypoint_reached">Je bent aangekomen bij een bezienswaardigheid.</string>
     <string name="route_finished">Je hebt de route voltooid.</string>
     <string name="route_offroute">Je bent van de route afgeraakt.</string>
+    <string name="agree">JA</string>
+    <string name="decline">NEE</string>
+    <string name="popup_question">Weet u zeker dat u de route voortgang wilt resetten?</string>
 </resources>
