@@ -64,8 +64,7 @@ public class Waypoint implements Comparable<Waypoint> {
     }
 
     public LatLng getLatLng(){
-        //TODO: Implement conversion
-        return null;
+        return new LatLng(this.latitude, this.longitude);
     }
 
     public String getPhotoIDsToString() {
