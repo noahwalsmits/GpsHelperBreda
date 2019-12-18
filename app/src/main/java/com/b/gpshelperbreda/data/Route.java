@@ -2,6 +2,8 @@ package com.b.gpshelperbreda.data;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -42,6 +44,14 @@ public class Route implements Serializable {
 
     public void setWaypoints(ArrayList<Waypoint> waypoints) {
         this.waypoints = waypoints;
+    }
+
+    public LatLng[] getLatLngs() {
+        LatLng[] latLngs = new LatLng[this.waypoints.size()];
+        for (int i = 0; i < this.waypoints.size(); i++) {
+            latLngs[i] = this.waypoints.get(i).getLatLng();
+        }
+        return latLngs;
     }
 
     //endregion

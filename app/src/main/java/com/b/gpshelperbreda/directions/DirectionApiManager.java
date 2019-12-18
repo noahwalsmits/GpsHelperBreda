@@ -43,32 +43,6 @@ public class DirectionApiManager {
     }
 
     /**
-     * Calling this method will make the locationListener draw the entire route
-     *
-     * @param route The route to be drawn
-     */
-    public void generateDirections(Route route) {
-
-        ArrayList<Waypoint> newRoute = new ArrayList<>();
-        for (Waypoint waypoint : route.getWaypoints()) {
-            if (!waypoint.isSeen()) {
-                newRoute.add(waypoint);
-            }
-        }
-
-        LatLng previous = null;
-        for (Waypoint waypoint : newRoute) {
-            if (previous != null) {
-                this.generateDirections(previous, waypoint.getLatLng());
-            }
-            previous = waypoint.getLatLng();
-        }
-        if (newRoute.size() > 1) {
-            this.generateDirections(newRoute.get(newRoute.size() - 1).getLatLng(), newRoute.get(0).getLatLng());
-        }
-    }
-
-    /**
      * Calling this method will make the locationListener draw a route between the points
      *
      * @param origin      The starting point
@@ -78,6 +52,38 @@ public class DirectionApiManager {
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 this.generateUrl(origin, destination),
+                null,
+
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        handleResponse(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.wtf(tag, "onErrorResponse");
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        this.queue.add(request);
+    }
+
+    /**
+     * Calling this method will make the LocationListener draw a route between the points using a single api call
+     *
+     * @param latLngs All the waypoints in the route
+     */
+    public void generateDirections(LatLng... latLngs) {
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                this.generateUrl(latLngs),
                 null,
 
                 new Response.Listener<JSONObject>() {
@@ -117,6 +123,23 @@ public class DirectionApiManager {
         return fullUrl;
     }
 
+    private String generateUrl(LatLng... latLngs) {
+        String firstPoint = latLngs[0].latitude + "," + latLngs[0].longitude;
+        String fullUrl = this.url + this.key;
+        fullUrl = fullUrl.replace("<latlng1>", firstPoint);
+        fullUrl = fullUrl.replace("<latlng2>", firstPoint);
+        String waypoints = "&waypoints=";
+        for (int i = 1; i < latLngs.length; i++) {
+            String waypointText = "via:" + latLngs[i].latitude + "," + latLngs[i].longitude;
+            if (i < latLngs.length - 1) {
+                waypointText += "|";
+            }
+            waypoints += waypointText;
+        }
+        fullUrl = fullUrl.replace("&mode", waypoints + "&mode");
+        return fullUrl;
+    }
+
     private void handleResponse(JSONObject response) {
         try {
             JSONArray routes = response.getJSONArray("routes");
@@ -140,18 +163,5 @@ public class DirectionApiManager {
             e.printStackTrace();
         }
     }
-
-//    private class DirectionsTask extends AsyncTask<LatLng, Integer, PolylineOptions> {
-//
-//        @Override
-//        protected PolylineOptions doInBackground(LatLng... latLngs) {
-//            generateDirections(latLngs[0], latLngs[1]);
-//            return null;
-//        }
-//
-//        protected void onPostExecute(PolylineOptions polylineOptions) {
-//
-//        }
-//    }
 
 }
