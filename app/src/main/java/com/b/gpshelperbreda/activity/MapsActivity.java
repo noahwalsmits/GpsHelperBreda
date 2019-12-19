@@ -35,10 +35,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.snackbar.Snackbar;
-import java.util.Calendar
-
+import java.util.Calendar;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionApiListener, LocationTrackerListener, RouteLogicListener, PopupMenu.OnMenuItemClickListener, GoogleMap.OnMarkerClickListener {
 
