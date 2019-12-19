@@ -85,3 +85,9 @@ lint/tmp/
 # lint/reports/
 
 app/.idea/
+
+app/gradle/
+
+app/gradlew
+
+app/gradlew.bat
