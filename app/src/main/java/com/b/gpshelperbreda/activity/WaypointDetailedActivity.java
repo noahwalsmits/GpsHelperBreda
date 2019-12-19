@@ -23,6 +23,10 @@ public class WaypointDetailedActivity extends AppCompatActivity {
         waypointText.setText(waypoint.getName());
 
         TextView waypointDescription = findViewById(R.id.waypoint_description);
+//        waypointDescription.setText(waypoint.getDescription());
+        String descriptionTitle = "description_" + waypoint.getSequenceID();
+        int resid = getResources().getIdentifier(descriptionTitle, "string", getPackageName());
+        waypointDescription.setText(resid);
 
         String descriptionTitle = "description_" + waypoint.getSequenceID();
         int resid = getResources().getIdentifier(descriptionTitle, "string", getPackageName());
