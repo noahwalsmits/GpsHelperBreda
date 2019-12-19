@@ -28,10 +28,6 @@ public class WaypointDetailedActivity extends AppCompatActivity {
         int resid = getResources().getIdentifier(descriptionTitle, "string", getPackageName());
         waypointDescription.setText(resid);
 
-        String descriptionTitle = "description_" + waypoint.getSequenceID();
-        int resid = getResources().getIdentifier(descriptionTitle, "string", getPackageName());
-        waypointDescription.setText(resid);
-
         ImageView imageView = findViewById(R.id.picture);
         if (waypoint.getPhotoIDs()[0] == 0) {
             //imageView.setImageResource(R.drawable.photo_no_picture);

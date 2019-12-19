@@ -4,10 +4,12 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,11 +23,18 @@ import com.b.gpshelperbreda.data.JsonParser;
 import com.b.gpshelperbreda.data.Route;
 import com.b.gpshelperbreda.data.RouteFactory;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private Route route;
     private Database database;
     private RouteFactory routeFactory;
+
+    Button NL;
+    Button ENG;
+    Button startRoute;
+    TextView routeName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,50 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         routeFactory = new RouteFactory(this);
 
         route = routeFactory.getRouteFromId(1);
+
+        NL = findViewById(R.id.NLBttn);
+        ENG = findViewById(R.id.ENGBttn);
+        routeName = findViewById(R.id.RouteSelectorText);
+        startRoute = findViewById(R.id.route);
+
+        NL.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Locale locale2 = new Locale("default");
+                Locale.setDefault(locale2);
+
+                Configuration config2 = new Configuration();
+                config2.locale = locale2;
+
+                getBaseContext().getResources().updateConfiguration(
+                        config2,getBaseContext().getResources().getDisplayMetrics());
+
+                routeName.setText(R.string.RouteSelectorText);
+                startRoute.setText(R.string.Route);
+            }
+        });
+
+        ENG.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Locale locale2 = new Locale("en");
+                Locale.setDefault(locale2);
+
+                Configuration config2 = new Configuration();
+                config2.locale = locale2;
+
+                getBaseContext().getResources().updateConfiguration(
+                        config2,getBaseContext().getResources().getDisplayMetrics());
+
+                routeName.setText(R.string.RouteSelectorText);
+                startRoute.setText(R.string.Route);
+            }
+        });
+
     }
 
     /**

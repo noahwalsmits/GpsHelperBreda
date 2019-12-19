@@ -108,14 +108,40 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
         android:background="#00FFFFFF"
         android:onClick="resetDatabase"
         android:text="Reset\nRoute"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/AGSLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AGSLogo"
+        app:layout_constraintTop_toTopOf="@+id/AGSLogo" />
+
+    <Button
+        android:id="@+id/NLBttn"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="14dp"
+        android:background="#00FFFFFF"
+        android:onClick="resetDatabase"
+        android:text="NL"
+        app:layout_constraintBottom_toBottomOf="@+id/AGSLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/AGSLogo" />
+
+    <Button
+        android:id="@+id/ENGBttn"
+        android:layout_width="55dp"
+        android:layout_height="45dp"
+        android:background="#00FFFFFF"
+        android:onClick="resetDatabase"
+        android:text="Eng"
+        app:layout_constraintBottom_toBottomOf="@+id/NLBttn"
+        app:layout_constraintEnd_toStartOf="@+id/AGSLogo"
+        app:layout_constraintStart_toEndOf="@+id/NLBttn"
+        app:layout_constraintTop_toTopOf="@+id/NLBttn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
