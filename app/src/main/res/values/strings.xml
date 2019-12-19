@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GPS Helper Breda</string>
+    <string name="app_name" translatable="false">GPS Helper Breda</string>
     <string name="logo_name" translatable="false">GPS Helper</string>
     <string name="logo_location" translatable="false">Breda</string>
     <string name="title_activity_maps">Map</string>
@@ -22,4 +22,19 @@
     <string name="popup_question">Weet u zeker dat u de route voortgang wilt resetten?</string>
     <string name="waypoint_check">U heeft deze bezienswaardigheid bezocht!</string>
     <string name="waypoint_todo">U heeft deze bezienswaardigheid nog niet bezocht!</string>
+    //Descriptions
+    <string name="description_1"></string>
+    <string name="description_2"></string>
+    <string name="description_3"></string>
+    <string name="description_4"></string>
+    <string name="description_5"></string>
+    <string name="description_6"></string>
+    <string name="description_7"></string>
+    <string name="description_8"></string>
+    <string name="description_9"></string>
+    <string name="description_10"></string>
+    <string name="description_11"></string>
+    <string name="description_12"></string>
+    <string name="description_13"></string>
+
 </resources>

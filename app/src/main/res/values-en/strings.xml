@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GPS Helper Breda</string>
     <string name="waypoint_todo">You didn\'t find this waypoint yet!</string>
     <string name="waypoint_reached_title">Waypoint found</string>
     <string name="waypoint_reached">You have arrived at your waypoint. Next waypoint:</string>
@@ -15,8 +14,23 @@
     <string name="Route">Historical KM</string>
     <string name="popup_question">Are you sure you want to reset your progress?</string>
     <string name="information_name_activity">Information</string>
-    <string name="information_about_title">Explanation application</string>
+    <string name="information_about_title">"Application explination "</string>
     <string name="decline">NO</string>
     <string name="agree">YES</string>
     <string name="information_about_app">"In this application you can find a map with a route. This application will help you follow the route by your choice. The route follows different waypoints. At each waypoint you get extra information about the waypoint. Good luck and have fun!  "</string>
+
+    //Descriptions
+    <string name="description_1"></string>
+    <string name="description_2"></string>
+    <string name="description_3"></string>
+    <string name="description_4"></string>
+    <string name="description_5"></string>
+    <string name="description_6"></string>
+    <string name="description_7"></string>
+    <string name="description_8"></string>
+    <string name="description_9"></string>
+    <string name="description_10"></string>
+    <string name="description_11"></string>
+    <string name="description_12"></string>
+    <string name="description_13"></string>
 </resources>
