@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GPS Helper Breda</string>
+    <string name="waypoint_todo">You didn\'t find this waypoint yet!</string>
+    <string name="waypoint_reached_title">Waypoint found</string>
+    <string name="waypoint_reached">You have arrived at your waypoint. Next waypoint:</string>
+    <string name="waypoint_name_activity">Waypoint</string>
+    <string name="waypoint_check">I did visit this waypoint</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="RouteSelectorText">Choose route:</string>
+    <string name="route_offroute_title">You\'re going off route</string>
+    <string name="route_offroute">Go back to route</string>
+    <string name="route_finished_title">Route completed</string>
+    <string name="route_finished">You have completed the route.</string>
+    <string name="Route">Historical KM</string>
+    <string name="popup_question">Are you sure you want to reset your progress?</string>
+    <string name="information_name_activity">Information</string>
+    <string name="information_about_title">Explanation application</string>
+    <string name="decline">NO</string>
+    <string name="agree">YES</string>
+    <string name="information_about_app">"In this application you can find a map with a route. This application will help you follow the route by your choice. The route follows different waypoints. At each waypoint you get extra information about the waypoint. Good luck and have fun!  "</string>
+</resources>
