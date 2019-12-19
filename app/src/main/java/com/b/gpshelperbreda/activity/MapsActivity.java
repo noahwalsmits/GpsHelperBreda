@@ -195,6 +195,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void centerCamera(View view) {
+        if (userLocation == null)
+            return;
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(userLocation.getPosition())
                 .zoom(15)
