@@ -23,7 +23,10 @@ public class WaypointDetailedActivity extends AppCompatActivity {
         waypointText.setText(waypoint.getName());
 
         TextView waypointDescription = findViewById(R.id.waypoint_description);
-        waypointDescription.setText(waypoint.getDescription());
+
+        String descriptionTitle = "description_" + waypoint.getSequenceID();
+        int resid = getResources().getIdentifier(descriptionTitle, "string", getPackageName());
+        waypointDescription.setText(resid);
 
         ImageView imageView = findViewById(R.id.picture);
         if (waypoint.getPhotoIDs()[0] == 0) {
@@ -31,8 +34,8 @@ public class WaypointDetailedActivity extends AppCompatActivity {
             imageView.setVisibility(View.GONE);
         } else {
             String name = "photo_" + waypoint.getPhotoIDs()[0];
-            int resid = getResources().getIdentifier(name, "drawable", getPackageName());
-            imageView.setImageResource(resid);
+            int resid2 = getResources().getIdentifier(name, "drawable", getPackageName());
+            imageView.setImageResource(resid2);
 
         }
     }
