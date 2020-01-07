@@ -19,20 +19,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
+import com.b.gpshelperbreda.Notifications;
+import com.b.gpshelperbreda.R;
+import com.google.android.material.snackbar.Snackbar;
+
 public class LocationTracker extends Service implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     protected LocationManager locationManager;
     protected LocationListener locationListener;
     private LocationTrackerListener listener;
     private final Context context;
+    private Notifications notifications;
     private static final int PERMISSION_REQUEST_CODE = 2000;
     private static final String PERMISSION_STRING = android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 
-    public LocationTracker(Context context, LocationTrackerListener listener, LocationManager locationManager) {
+    public LocationTracker(Context context, LocationTrackerListener listener, LocationManager locationManager, Notifications notifications) {
         this.context = context;
         this.listener = listener;
         this.locationManager = locationManager;
+        this.notifications = notifications;
         setLocationListener();
         trackLocation();
     }
@@ -60,11 +66,13 @@ public class LocationTracker extends Service implements ActivityCompat.OnRequest
             @Override
             public void onProviderEnabled(String s) {
                 Log.d("Debug", "Provider enabled");
+                notifications.sendNotification(context.getResources().getString(R.string.gps_on), context.getResources().getString(R.string.gps_enabled), Notifications.NOTIFICATION_GPS);
             }
 
             @Override
             public void onProviderDisabled(String s) {
                 Log.d("Debug", "Provider disabled");
+                notifications.sendNotification(context.getResources().getString(R.string.gps_off), context.getResources().getString(R.string.gps_disabled), Notifications.NOTIFICATION_GPS);
             }
         };
     }

@@ -68,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markers = new ArrayList<>();
         route = (Route) getIntent().getExtras().getSerializable("ROUTE");
         directionApiManager = new DirectionApiManager(this, this);
-        locationTracker = new LocationTracker(this, this, (LocationManager) getSystemService(Context.LOCATION_SERVICE));
+        locationTracker = new LocationTracker(this, this, (LocationManager) getSystemService(Context.LOCATION_SERVICE), this.notifications);
         routeLogic = new RouteLogic(route, this, this);
     }
 
