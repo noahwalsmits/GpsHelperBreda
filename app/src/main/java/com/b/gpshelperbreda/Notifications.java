@@ -15,6 +15,7 @@ public class Notifications {
     private NotificationManager notificationManager;
     private Context context;
     private int currentId;
+    public static int NOTIFICATION_GPS = -3;
 
     public Notifications(Context context) {
         this.notificationManager = context.getSystemService(NotificationManager.class);
