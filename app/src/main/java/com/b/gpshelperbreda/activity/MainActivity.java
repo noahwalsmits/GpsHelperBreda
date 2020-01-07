@@ -162,4 +162,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
         dialog.show();
 
     }
+
+    public void infoButtonClick(View view) {
+        startActivity(new Intent(this, InformationActivity.class));
+    }
 }
