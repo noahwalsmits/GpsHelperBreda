@@ -157,7 +157,7 @@ Een stukje verder in de Visserstraat (nr. 31), aan de rechterkant, staat een fra
     <string name="description_12">Dit is de Grote Kerk.</string>
     <string name="description_13">Dit is het Bevrijdingsmonument.</string>
     <string name="gps_enabled">De applicatie kan GPS gebruiken</string>
-    <string name="gps_disabled">De applicatie kan momenteel geen GPS gebruiken</string>
+    <string name="gps_disabled">De applicatie kan momenteel geen GPS gebruiken en zal niet volledig kunnen functioneren</string>
     <string name="gps_off">GPS staat uit</string>
     <string name="gps_on">GPS staat aan</string>
 </resources>
