@@ -22,9 +22,12 @@
     <string name="popup_question">Weet u zeker dat u de route voortgang wilt resetten?</string>
     <string name="waypoint_check">U heeft deze bezienswaardigheid bezocht!</string>
     <string name="waypoint_todo">U heeft deze bezienswaardigheid nog niet bezocht!</string>
+    <string name="gps_enabled">De applicatie kan GPS gebruiken</string>
+    <string name="gps_disabled">De applicatie kan momenteel geen GPS gebruiken en zal niet volledig kunnen functioneren</string>
+    <string name="gps_off">GPS staat uit</string>
+    <string name="gps_on">GPS staat aan</string>
 
     //Descriptions
-
     <string name="description_1">Schuin aan de overkant op de Grote Markt vindt u het stadhuis van Breda
 en tevens de dependance van de VVV.
 
@@ -55,8 +58,7 @@ Prinsenlaan in Breda. Door het poortgebouw rechts van het stadhuis lopen we
 het Stadserf op. Midden op dit pleintje herinnert het beeldje De
 Turfschipper van Gerarda Rueb, aan de legendarische overval in 1590 van
 Adriaan van Bergen met zijn Turfschip. (De VVV Breda verkoopt hiervan een
-replica).
-</string>
+replica).</string>
     <string name="description_2">U loopt via het poortje weer terug naar de Grote Markt en gaat linksaf.
 De tweede straat links is de St. Janstraat. Hier gaat u in.
 
@@ -96,8 +98,7 @@ u nog zien aan de kinderkopjes die aan de 19e eeuwse voorgevel van het
 academiegebouw zijn aangebracht. De rode kleur van dit huis (na de
 restauratie aangebracht) zal door de loop der jaren een mooie grijs rode
 kleur van dit huis (na de restauratie aangebracht) zal door de loop der
-jaren een mooie grijs rode kleur krijgen.
-</string>
+jaren een mooie grijs rode kleur krijgen.</string>
     <string name="description_3">Aan het eind van de St. Jansstraat gaat u rechtsaf de Molenstraat in.
 
 In de Molenstraat ziet u recht de Bibliotheek, ontworpen door architect
@@ -106,16 +107,29 @@ ruimte gecreëerd door de bibliotheek schuin oplopende wanden te geven. Op de
 plaats van de bibliotheek (op de hoek met de Oude Vest) bevond zich vroeger
 een poort. Boven deze poort bevond zich \'s Heeren Gevangenhuys, waar de
 zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het
-asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
+asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.</string>
+    <string name="description_4">Op de hoek Molenstraat en de Oude Vest gaat u linksaf.
+
+Op deze hoek ziet u aan de overkant een voornaam monument uit de
+geschiedenis van Breda: de kloosterkazerne. Het is een deel van het vroegere
+zusterklooster St. Catharinadal, dat hier sinds 1295 gevestigd was. Het
+huidige gebouw dateert uit 1504. In 1645 werden de zusters Norbertinessen
+vanuit Breda naar Oosterhout verdreven.
 </string>
-    <string name="description_4">Naast de Kloosterkazerne is het Chassé Theater gebouwd, ook ontworpen door Herman Hertzberger, de ontwerper van de bibliotheek.
-De kopse kant van het aangrenzende kazernegebouw komt in dit nieuwe theater naar binnen. Het Casino en het Chassé Theater hebben een gezamenlijke ingang.
-</string>
-    <string name="description_5">Op de hoek van Vlaszak en Veemarktstraat is in het trottoir een aanduiding te zien van de vroegere Gasthuispoort.
+    <string name="description_5">Naast de Kloosterkazerne is het Chassé Theater gebouwd, ook ontworpen door Herman Hertzberger, de ontwerper van de bibliotheek.
+De kopse kant van het aangrenzende kazernegebouw komt in dit nieuwe theater naar binnen. Het Casino en het Chassé Theater hebben een gezamenlijke ingang.</string>
+    <string name="description_6">Een zeer markant kunstwerk. Er wordt veel gespeculeerd over de betekenis. Het roestbruine, gevlekte werk van staal stelt de \'Binding van Isaäc\' voor,
+gemaakt door de Israëlische kunstenaar Menashe Kadishman. Het werk grijpt terug op het bijbelse verhaal van Abraham, die de opdracht krijgt zijn zoon Isaäc te offeren.
+Op het laatste moment weet een engel Abraham tegen te houden. Een ram die verstrikt is geraakt in het struikgewas, wordt vervolgens geofferd.
+Abraham, die zoveel deed in de naam van God, werd hiermee op de proef gesteld.</string>
+    <string name="description_7">Dit gebouw heeft in het verleden verschillende functies gehad. Het was gasthuis, pesthuis, dolhuis (gekkenhuis) en tot 1955 Oude Mannenhuis. Vanaf 2008 is hier het Graphic Design Museum gevestigd. Het eerste museum ter wereld dat zich geheel richt op Graphic Design. Voor liefhebbers een aanrader om het te bezoeken. Onlangs samen gegaan met het Stedelijk Museum.</string>
+    <string name="description_8">Op de hoek van Vlaszak en Veemarktstraat is in het trottoir een aanduiding te zien van de vroegere Gasthuispoort.
 Ook een aantal stenen is nog bewaard gebleven.</string>
-    <string name="description_6">Dit is de Willem Markxtuin.</string>
-    <string name="description_7">Dit is de VVV.</string>
-    <string name="description_8">Als u de brug overgaat, ziet u aan uw linkerhand het
+    <string name="description_9">Dit is de Willem Markxtuin.</string>
+    <string name="description_10">Dit is het Begijnenhof</string>
+    <string name="description_11">Dit is de VVV.</string>
+    <string name="description_12">Dit is de Liefdezuster.</string>
+    <string name="description_13">Als u de brug overgaat, ziet u aan uw linkerhand het
 Nassau-Baroniemonument.
 
 Bij de ingang van het stadspark, het
@@ -140,9 +154,57 @@ Leeuw van Nassau die boven alles uittorent met koningskroon,
 zwaard en wapenschild. In de drie reliëfs is de \'blijde incomste\'
 van Graaf Engelbert en zijn gemalin afgebeeld. De poorters
 bieden de sleutel van de stad aan.</string>
-    <string name="description_9">Dit is The Light House.</string>
-    <string name="description_10">Dit is de Stadhouderspoort.</string>
-    <string name="description_11">Bij de Vishal gaat u de Vismarktstraat in; deze straat komt uit op de Havermarkt.
+    <string name="description_14">Dit is The Light House.</string>
+    <string name="description_15">Aan het einde van het park
+loopt u langs het poortgebouw
+van het kasteel; links kijkt u op het kasteelplein.
+
+Dit plein bevindt zich aan de zuiderzijde
+van het kasteel. U heeft zo een mooi
+uitzicht op de monumentale poort, de
+zgn. Stadhouderspoort met het wapen
+van stadhouder Willem de Vijfde, dat
+overigens pas later is aangebracht.
+Achter u ziet u het ruiterstandbeeld
+van stadhouder koning Willem III
+geplaatst. Voor dit standbeeld werd
+onder de burgerij van Breda een
+inzameling gehouden die f 47.000,--
+opbracht. Voor de oude Nassaustad
+Breda is de stadhouderkoning van
+grote betekenis geweest. Hij voltooide
+na anderhalve eeuw de verbouwing
+van het Kasteel.
+
+Hendrik de Derde van Nassau en zijn
+(drede) vrouw Mencia de Mendoza hebben veel in Breda ver-
+toefd, maar verbleven dan toch bij voorkeur in de vertrekken
+boven de overigens al lang geleden gesloopte watermolen op het
+terrein van het Kasteel.
+
+Rechts van de poort bevindt zich het zgn. Blokhuis, de ambts-
+woning van de gouveneur van de KMA. Willem van Oranje
+woonde daar in een aangrenzende ruimte, maar Prins Maurits
+prefereerde de watermolen als dagelijks verblijf.
+Prins Philips Willem (1554-1618), de oudste en roomskatholieke
+zoon van Willem van Oranje, die vele jaren in Spaanse balling-
+schap verbleef en in Diest werd begraven, is de eerste Oranje
+geweest, die met zijn vrouw ook in het Kasteel ging wonen.
+
+Hij liet het park Valkenberg verfraaien en het Kasteel echt als
+een paleis inrichten. Bij zijn dood in 1618 werden in Breda
+tweeënveertig dagen achtereen de kerkklokken geluid.
+Op de plaats van de vensters, links en rechts van de poort,
+bevonden zich in de zestiende en zeventiende eeuw sierlijke
+open galerijen. Het muisgrijze gebouw links van de kasteelpoort
+werd gebouwd in 1867. Het maakt thans ook deel uit van het
+KMA gebouwen complex.
+Meer geschiedenis schuilt et achter de witte pui van het gebouw
+</string>
+    <string name="description_16">Dit is de Stadhouderspoort.</string>
+    <string name="description_17">Dit het het Huis van Brecht.</string>
+    <string name="description_18">Dit is het Spanjaardsgat.</string>
+    <string name="description_19">Bij de Vishal gaat u de Vismarktstraat in; deze straat komt uit op de Havermarkt.
 
 Van de plaats waar de vishal (1725) nog aangeeft dat hier vroeger een levendige handel in zeevis werd bedreven, wandelen we door de Vismarktstraat naar de Havermarkt. Deze markt is vanaf de jaren zestig tot op de dag van vandaag het uitgaanscentrum van Breda.
 De naam Havermarkt ten spijt moet worden vastgesteld, dat de granen niet hier; maar op de Grote Markt werden verhandeld. Wel werden hier door de boeren uit de omtrek groenten, eieren en boter aangevoerd en verkocht. In de zeventiende eeuw werd hier ook een leermarkt gehouden.
@@ -154,10 +216,16 @@ Er is veel te zien op dit pleintje. Links op de hoek van de Havermarkt en Reiger
 Tegenover u op de Havermarkt bevinden zich nog twee panden die uw aandacht verdienen. Havermarkt nummer 5 dateert uit de zestiende en zeventiend eeuw. \'De Vogelstruys\' op Havermarkt 21 is een opmerkelijk zeventiende eeuws monument met een hoge, niet symmetrische trapgevel. Ook dit huis heeft in de loop de eeuwen allerlei functies en bestemmingen gehad. Het was onder meer refugiehuis voor de zusters van Catharinadal in de zeventiende eeuw.
 Voor het beeldje \'De Troubadour\', dat aan het eind van de Havermarkt prijkt, zijn vier exemplaren vervaardigd. De andere drie werden onthuld in Diest, Orange en Dillenburg, de zustersteden van Breda in de in 1963 tot stand gekomen Unie van Oranjesteden.
 Een stukje verder in de Visserstraat (nr. 31), aan de rechterkant, staat een fraai bakstenen huis uit de 17e eeuw met overblijfselen van een zestiende eeuwse gothische woning, de Drie Moren geheten.</string>
-    <string name="description_12">Dit is de Grote Kerk.</string>
-    <string name="description_13">Dit is het Bevrijdingsmonument.</string>
-    <string name="gps_enabled">De applicatie kan GPS gebruiken</string>
-    <string name="gps_disabled">De applicatie kan momenteel geen GPS gebruiken en zal niet volledig kunnen functioneren</string>
-    <string name="gps_off">GPS staat uit</string>
-    <string name="gps_on">GPS staat aan</string>
+    <string name="description_20">Dit is de hHavermarkt</string>
+    <string name="description_21">Dit is de Grote Kerk.</string>
+    <string name="description_22">Dit is Het Poortje.</string>
+    <string name="description_23">Dit is de Ridderstraat.</string>
+    <string name="description_24">Dit is de Grote Markt.</string>
+    <string name="description_25">Dit is het Bevrijdingsmonument.</string>
+
+
+
+
+
+
 </resources>

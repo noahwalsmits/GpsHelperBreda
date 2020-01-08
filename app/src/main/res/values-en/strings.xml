@@ -19,8 +19,13 @@
     <string name="agree">YES</string>
     <string name="information_about_app">"In this application you can find a map with a route. This application will help you follow the route by your choice. The route follows different waypoints. At each waypoint you get extra information about the waypoint. Good luck and have fun!  "</string>
 
+    <string name="gps_disabled">The application is unable to use GPS at this moment and won\'t be completely functional</string>
+    <string name="gps_enabled">The application is able to use GPS</string>
+    <string name="gps_off">GPS is off</string>
+    <string name="gps_on">GPS is on</string>
+
     //Descriptions
-    <string name="description_1">Diagonally across the street on the Grote Markt is the city hall of Breda
+    <string name = "description_1"> Diagonally across the street on the Grote Markt is the city hall of Breda
 and also the branch office of the VVV.
 
 The main entrance of the stand house is above the landing, which is guarded
@@ -50,8 +55,8 @@ Prinsenlaan in Breda. We walk through the gatehouse to the right of the town hal
 on the Stadserf. In the middle of this square the figurine reminds De
 Peat skipper by Gerarda Rueb, to the legendary robbery in 1590 of
 Adriaan van Bergen with his Peat ship. (The Breda Tourist Office is selling one of these
-replica).</string>
-    <string name="description_2">You walk back through the gate to the Grote Markt and turn left.
+replica). </string>
+        <string name = "description_2"> You walk back through the gate to the Grote Markt and turn left.
 The second street on the left is St. Janstraat. You enter here.
 
 At the corner of Halstraat / St. Janstraat we are in front of the building with the
@@ -90,24 +95,36 @@ you can still see from the cobblestones that are on the 19th century facade of i
 academy building. The red color of this house (after the
 restoration applied) will become a beautiful gray red over the years
 color of this house (applied after the restoration) will pass through the course of
-get a nice gray red color for years.
-</string>
-    <string name="description_3">At the end of St. Jansstraat you turn right into Molenstraat.
-
-In the Molenstraat you can see the Library, designed by architect
+get a nice gray-red color in the years. </string>
+    <string name = "description_3"> At the end of St. Jansstraat, turn right into Molenstraat. In the Molenstraat you can see the Library, designed by architect
 Herman Hertzberger. Because the Molenstraat is quite narrow, the architect has
 space created by giving the library sloping walls. On the
 location of the library (on the corner with the Old Vest) used to be
 a gate. Above this gate was \'s Heeren Gevangenhuys, where the
 the most severely punished. The place is still with pebbles in it
 asphalt indicated; the asphalt road is the site of the old city canal.</string>
-    <string name="description_4">In addition to the Kloosterkazerne, the Chassé Theater was built, also designed by Herman Hertzberger, the designer of the library.
-The front end of the adjacent barracks building enters this new theater. The Casino and the Chassé Theater have a joint entrance.</string>
-    <string name="description_5">On the corner of Vlaszak and Veemarktstraat you can see an indication of the former Gasthuispoort in the sidewalk.
-A number of stones have also been preserved.</string>
-    <string name="description_6">This is the Willem MarkxTuin.</string>
-    <string name="description_7">This is the VVV.</string>
-    <string name="description_8">When you cross the bridge, you will see it on your left
+        <string name = "description_4"> Turn left at the corner of Molenstraat and Oude Vest.
+
+On this corner you will see a distinguished monument from the
+history of Breda: the monastery barracks. It is a part of the former
+sister monastery St. Catharinadal, which was established here since 1295. It
+current building dates from 1504. In 1645 the sisters became Norbertinessen
+driven from Breda to Oosterhout.
+</string>
+        <string name = "description_5"> In addition to the Kloosterkazerne, the Chassé Theater was built, also designed by Herman Hertzberger, the designer of the library.
+The front end of the adjacent barracks building enters this new theater. The Casino and the Chassé Theater have a joint entrance. </string>
+        <string name = "description_6"> A very striking work of art. There is much speculation about the meaning. The rust-brown, spotted work of steel represents the "Binding of Isaac",
+made by the Israeli artist Menashe Kadishman. The work goes back to the biblical story of Abraham, who is instructed to sacrifice his son Isaac.
+At the last minute an angel manages to stop Abraham. A ram caught in the thicket is then sacrificed.
+Abraham, who did so much in the name of God, was put to the test with this. </string>
+        <string name = "description_7"> This building has had various functions in the past. It was a guesthouse, a plaguehouse, a madhouse (madhouse) and until 1955 Oude Mannenhuis. The Graphic Design Museum has been established here since 2008. The first museum in the world that focuses entirely on Graphic Design. For enthusiasts a must to visit. Recently merged with the Stedelijk Museum. </string>
+        <string name = "description_8"> On the corner of Vlaszak and Veemarktstraat you can see an indication of the former Gasthuispoort in the sidewalk.
+A number of stones have also been preserved. </string>
+        <string name = "description_9"> This is the Willem Markxtuin. </string>
+        <string name = "description_10"> This is the Begijnenhof </string>
+        <string name = "description_11"> This is the tourist office. </string>
+        <string name = "description_12"> This is the Love Sister. </string>
+    <string name = "description_13"> When you cross the bridge, you will see it on your left
 Nassau-Baroni monument.
 
 At the entrance to the city park, it
@@ -131,15 +148,75 @@ municipalities in and around the Baronie but also the
 Lion of Nassau towering above everything with a royal crown,
 sword and coat of arms. In the three reliefs, the "happy incomplete" is
 of Count Engelbert and his wife. The Poorters
-offer the key to the city.</string>
-    <string name="description_9">This is the Light House.</string>
-    <string name="description_10">THis is the Stadhouderspoort.</string>
-    <string name="description_12">This is the Grote Kerk.</string>
-    <string name="description_13">This is the Bevrijdingsmonument.</string>
-    <string name="description_11">At the Vishal you enter the Vismarktstraat; this street ends at the Havermarkt.  From the place where the fish market (1725) still indicates that there was a lively trade in sea fish here in the past, we walk through the Vismarktstraat to the Havermarkt. This market has been the entertainment center of Breda from the 1960s to the present day. Despite the name Havermarkt, it must be stated that the cereals are not here; but were traded on the Grote Markt. However, vegetables, eggs and butter were supplied and sold by farmers from the area. A leather market was also held here in the seventeenth century. The old names of this square were Groenmarkt, Botermarkt and Korenmarkt, which indicates the earlier functions a little better.  This was laid out around 1490 as a widening of the Visserstraat. If you grab a beer on a terrace on this delightful square in the summer, you will soon discover (even without that beer) that this square offers the best view of the large tower of the Grote Kerk. From this place you can also admire the beautiful broad substructure of that tower. There is much to see on this square. To the left on the corner of Havermarkt and Reigerstraat you will see the house \'De Arent\', built around 1490. It now has a seventeenth-century stepped gable and was completely restored in 1966 and converted into a restaurant. Opposite you on the Havermarkt are two more buildings that deserve your attention. Havermarkt number 5 dates from the sixteenth and seventeenth centuries. \'De Vogelstruys\' on Havermarkt 21 is a remarkable seventeenth-century monument with a high, non-symmetrical stepped gable. This house has also had many functions and destinations over the centuries. It was, among other things, a refuge house for the sisters of Catharinadal in the seventeenth century. Four statuettes were made for the \'De Troubadour\' statue, which adorns the end of Havermarkt. The other three were unveiled in Diest, Orange and Dillenburg, the sister cities of Breda in the Union of Orange Cities, which was established in 1963. A little further in the Visserstraat (no. 31), on the right-hand side, is a beautiful brick house from the 17th century with the remains of a sixteenth-century gothic house, called the Three Moors.</string>
-    <string name="gps_disabled">The application is unable to use GPS at this moment and won\'t be completely functional</string>
-    <string name="gps_enabled">The application is able to use GPS</string>
-    <string name="gps_off">GPS is off</string>
-    <string name="gps_on">GPS is on</string>
+offer the key to the city. </string>
+        <string name = "description_14"> This is The Light House. </string>
+        <string name = "description_15"> At the end of the park
+walk past the gatehouse
+from the castle; look left on the castle square.
+
+This square is located on the south side
+from the castle. You have such a beautiful one
+view of the monumental gate, the
+so-called Stadhouderspoort with the weapon
+from Stadtholder Willem the Fifth, that
+was only applied later.
+You can see the equestrian statue behind you
+from Stadtholder King William III
+placed. For this statue was
+under the bourgeoisie of Breda a
+collection held that NLG 47,000
+yielded. For the old Nassaustad
+Breda is the Stadholder King of
+great significance. He completed
+the renovation after one and a half centuries
+from the Castle.
+
+Hendrik the Third of Nassau and his
+(actress) wife Mencia de Mendoza has sold a lot in Breda
+but then still preferred to stay in the rooms
+on top of the watermill that had been demolished a long time ago
+grounds of the Castle.
+
+To the right of the gate is the so-called Blokhuis, the official
+home of the governor of the KMA. Willem van Oranje
+lived there in an adjoining room, but Prince Maurits
+preferred the watermill as a daily stay.
+Prince Philips Willem (1554-1618), the oldest and Roman Catholic
+son of Willem van Oranje, who spent many years in Spanish exile
+remained and buried in Diest is the first Orange
+who also went to live in the Castle with his wife.
+
+He had the park Valkenberg embellished and the Castle really like
+decorate a palace. At his death in 1618 were in Breda
+the church bells sound for forty-two days in a row.
+At the location of the windows, left and right of the gate,
+found themselves graceful in the sixteenth and seventeenth centuries
+open galleries. The mouse-gray building to the left of the castle gate
+was built in 1867. It is now also part of the
+KMA buildings complex.
+More history lies behind the white facade of the building
+</string>
+    <string name = "description_16"> This is the Stadhouderspoort. </string>
+        <string name = "description_17"> This is the Huis van Brecht. </string>
+        <string name = "description_18"> This is the Spanjaardsgat. </string>
+        <string name = "description_19"> At the Vishal you enter the Vismarktstraat; this street ends at the Havermarkt.
+
+From the place where the fish market (1725) still indicates that a lively trade in sea fish used to be here, we walk through the Vismarktstraat to the Havermarkt. This market has been the entertainment center of Breda from the 1960s to the present day.
+Despite the name Havermarkt, it must be stated that the cereals are not here; but were traded on the Grote Markt. However, vegetables, eggs and butter were supplied and sold by farmers from the area. A leather market was also held here in the seventeenth century.
+The old names of this square were Groenmarkt, Botermarkt and Korenmarkt, which indicates the earlier functions a little better.
+
+This was laid out around 1490 as a widening of the Visserstraat. If you grab a beer on a terrace on this delightful square in the summer, you will soon discover (even without that beer) that this square offers the best view of the large tower of the Grote Kerk.
+From this place you can also admire the beautiful broad substructure of that tower.
+There is much to see on this square. To the left on the corner of Havermarkt and Reigerstraat you will see the house \"De Arent\", built around 1490. It now has a seventeenth-century stepped gable and was completely restored in 1966 and converted into a restaurant.
+Opposite you on the Havermarkt are two more buildings that deserve your attention. Havermarkt number 5 dates from the sixteenth and seventeenth centuries. \'De Vogelstruys\' at Havermarkt 21 is a remarkable seventeenth-century monument with a high, non-symmetrical stepped gable. This house has also had many functions and destinations over the centuries. It was, among other things, a refuge house for the sisters of Catharinadal in the seventeenth century.
+Four statuettes were made for the statuette \"De Troubadour \", which stands at the end of the Havermarkt. The other three were unveiled in Diest, Orange and Dillenburg, the sister cities of Breda in the Union of Orange Cities, which was established in 1963.
+A little further in the Visserstraat (no. 31), on the right-hand side, is a beautiful brick house from the 17th century with the remains of a sixteenth-century gothic house, called the Three Moors. </string>
+        <string name = "description_20"> This is the hHavermarkt </string>
+        <string name = "description_21"> This is the Great Church. </string>
+        <string name = "description_22"> This is Het Poortje. </string>
+        <string name = "description_23"> This is the Ridderstraat. </string>
+        <string name = "description_24"> This is the Grote Markt. </string>
+        <string name = "description_25"> This is the Liberation Monument. </string>
+
 
 </resources>
